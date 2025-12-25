@@ -266,3 +266,79 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     color: #ffeb3b; 
     font-weight: bold;
 }
+/* Tree Container Layout */
+.tree-container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    overflow: hidden;
+}
+
+.tree {
+    position: relative;
+    width: 120px;
+    height: 150px;
+    flex-shrink: 0;
+}
+
+/* The Trunk */
+.trunk {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 15px;
+    height: 60px;
+    background: #5d4037;
+    transform: translateX(-50%);
+    border-radius: 4px;
+}
+
+/* The Leafy Top */
+.canopy {
+    position: absolute;
+    bottom: 45px;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background: #2e7d32;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    animation: sway 4s ease-in-out infinite;
+}
+
+/* Individual Blowing Leaves */
+.leaf {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #81c784;
+    border-radius: 15px 0;
+    opacity: 0;
+}
+
+/* Leaf Positions and Animation Timing */
+.leaf:nth-child(1) { top: 10px; left: 20px; animation: blow 3s infinite 0s; }
+.leaf:nth-child(2) { top: 30px; left: 50px; animation: blow 3s infinite 0.5s; }
+.leaf:nth-child(3) { top: 50px; left: 10px; animation: blow 3s infinite 1s; }
+.leaf:nth-child(4) { top: 20px; left: 70px; animation: blow 3s infinite 1.5s; }
+.leaf:nth-child(5) { top: 60px; left: 40px; animation: blow 3s infinite 2s; }
+
+/* The "Blowing" Animation */
+@keyframes blow {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0;
+    }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% {
+        transform: translate(100px, -40px) rotate(90deg);
+        opacity: 0;
+    }
+}
+
+/* The "Swaying" Tree Animation */
+@keyframes sway {
+    0%, 100% { transform: translateX(-50%) rotate(-2deg); }
+    50% { transform: translateX(-50%) rotate(2deg); }
+}
