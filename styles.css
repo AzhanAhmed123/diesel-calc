@@ -95,3 +95,20 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
   border-left: 5px solid var(--green-1); /* Subtle professional accent */
 }
 
+/* Professional alignment for result numbers */
+.results p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 8px 0;
+}
+
+/* This targets the actual number value */
+#fuelDay, #co2Day, #costDay, #dieselEnergy, #solarEnergy, #annualCO2, #payback {
+    font-family: 'Courier New', Courier, monospace; /* Essential for vertical alignment */
+    font-weight: bold;
+    min-width: 100px; /* Ensures the decimal points line up */
+    text-align: right;
+    display: inline-block;
+}
