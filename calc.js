@@ -37,11 +37,18 @@ function calculate(){
   document.getElementById('solarEnergy').innerText = solarEnergy.toFixed(2);
   document.getElementById('payback').innerText = payback? payback.toFixed(1): 'N/A';
 
-  // ANIMATED updates (These will count up from 0)
-  // We use Math.round because the animation looks best with whole numbers
-  animateValue("annualCO2", 0, Math.round(annualCO2saved), 1200);
-  animateValue("costDay", 0, Math.round(costDay), 1000);
+  // ANIMATING ALL RESULTS NOW:
+  animateValue("fuelDay", 0, fuelDay, 1000);
+  animateValue("co2Day", 0, co2Day, 1000);
+  animateValue("costDay", 0, costDay, 1000);
+  animateValue("dieselEnergy", 0, dieselEnergy, 1000);
+  animateValue("solarEnergy", 0, solarEnergy, 1000);
+  animateValue("annualCO2", 0, annualCO2saved, 1200);
 
+  // Payback is a small decimal, so we keep it static or handle it separately
+  document.getElementById('payback').innerText = payback ? payback.toFixed(1) : 'N/A';
+
+  
 } // <--- This is the closing bracket for calculate()
 
 // --- EVERYTHING BELOW IS OUTSIDE THE BRACKETS ---
@@ -71,3 +78,4 @@ function animateValue(id, start, end, duration) {
     timer = setInterval(run, stepTime);
     run();
 }
+
