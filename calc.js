@@ -28,54 +28,44 @@ function calculate(){
   const annualCO2saved = co2Day * 365 * replacedFraction;
   const annualFuelCost = costDay * 365;
   const annualSavings = Math.max(0, annualFuelCost * replacedFraction - maint);
-  const payback = annualSavings>0? (install/annualSavings):null;
+  const payback = annualSavings>0? (install/annualSavings):0;
 
-  // Static updates (normal display)
-  document.getElementById('fuelDay').innerText = fuelDay.toFixed(2);
-  document.getElementById('co2Day').innerText = co2Day.toFixed(2);
-  document.getElementById('dieselEnergy').innerText = dieselEnergy.toFixed(2);
-  document.getElementById('solarEnergy').innerText = solarEnergy.toFixed(2);
-  document.getElementById('payback').innerText = payback? payback.toFixed(1): 'N/A';
-
-  // ANIMATING ALL RESULTS NOW:
+  // ANIMATING ALL RESULTS WITH 2 DECIMAL PLACES
   animateValue("fuelDay", 0, fuelDay, 1000);
   animateValue("co2Day", 0, co2Day, 1000);
   animateValue("costDay", 0, costDay, 1000);
   animateValue("dieselEnergy", 0, dieselEnergy, 1000);
   animateValue("solarEnergy", 0, solarEnergy, 1000);
   animateValue("annualCO2", 0, annualCO2saved, 1200);
-
-  // Payback is a small decimal, so we keep it static or handle it separately
-  document.getElementById('payback').innerText = payback ? payback.toFixed(1) : 'N/A';
-
-  
-} // <--- This is the closing bracket for calculate()
-
-// --- EVERYTHING BELOW IS OUTSIDE THE BRACKETS ---
+  animateValue("payback", 0, payback, 1000);
+} 
 
 function animateValue(id, start, end, duration) {
     let obj = document.getElementById(id);
     if (!obj) return;
     let range = end - start;
-    let minTimer = 50;
-    let stepTime = Math.abs(Math.floor(duration / range)) || minTimer;
     let startTime = new Date().getTime();
     let endTime = startTime + duration;
-    let timer;
 
     function run() {
         let now = new Date().getTime();
         let remaining = Math.max((endTime - now) / duration, 0);
-        let value = Math.round(end - (remaining * range));
+        let value = end - (remaining * range);
         
-        // This line adds commas (e.g. 11,836) to make it look professional
-        obj.innerHTML = value.toLocaleString(); 
+        // This forces exactly 2 decimal places and adds commas
+        obj.innerHTML = value.toLocaleString(undefined, {
+            minimumFractionDigits: 2, 
+            maximumFractionDigits: 2
+        });
         
-        if (value == end) {
-            clearInterval(timer);
+        if (now < endTime) {
+            requestAnimationFrame(run);
+        } else {
+            obj.innerHTML = end.toLocaleString(undefined, {
+                minimumFractionDigits: 2, 
+                maximumFractionDigits: 2
+            });
         }
     }
-    timer = setInterval(run, stepTime);
-    run();
+    requestAnimationFrame(run);
 }
-
