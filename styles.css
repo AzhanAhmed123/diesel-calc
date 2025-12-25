@@ -72,3 +72,26 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     width: 100%; /* Makes input boxes full width on phones */
   }
 }
+/* Animation Definitions */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply to major sections */
+.container, .hero-content, .step {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Make results pop when they appear */
+.results {
+  animation: fadeInUp 0.5s ease-in-out;
+  border-left: 5px solid var(--green-1); /* Subtle professional accent */
+}
+
