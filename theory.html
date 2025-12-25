@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Carbon Theory - Sustainable Energy and Urban Green Mitigation</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-green">
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo small">Sustainable Energy and Urban Green Mitigation</h1>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="calculator.html">Calculator</a>
+        <a href="theory.html" class="active">Carbon Theory</a>
+        <a href="trees.html">Urban Trees</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container">
+      <h2>Carbon & Fuel Theory</h2>
+      <p>This page explains the core formulas used by the calculator and the sources for default values (Karachi-based).</p>
+
+      <h3>Key Equations</h3>
+      <ol>
+        <li><strong>Fuel per day (L)</strong> = Fuel efficiency (L/h) × Operating hours (h/day)</li>
+        <li><strong>CO₂ per day (kg)</strong> = Fuel per day × CO₂ factor (kg CO₂/L). Default = 2.68 kg CO₂/L (IPCC)</li>
+        <li><strong>Diesel energy (kWh/day)</strong> = Generator power (kW) × Operating hours (h/day)</li>
+        <li><strong>Solar energy (kWh/day)</strong> = Solar capacity (kW) × Sun hours (h/day)</li>
+        <li><strong>Annual CO₂ saved (kg)</strong> = CO₂ per day × 365 × min(solarEnergy/dieselEnergy,1)</li>
+        <li><strong>Payback (years)</strong> = Installation cost / Annual savings</li>
+      </ol>
+
+      <h3>Default Karachi values and sources</h3>
+      <ul>
+        <li>Diesel price: 285 PKR/L (PSO retail prices, 2024)</li>
+        <li>Sun hours: 5.5 h/day (NREL / AEDB datasets)</li>
+        <li>CO₂ factor: 2.68 kg CO₂/L (IPCC)</li>
+        <li>Fuel efficiency (example): 2.2 L/h for a 10 kW genset (manufacturer curves)</li>
+      </ul>
+
+      <h3>Notes on assumptions</h3>
+      <p>All assumptions are cited in the report. The calculator uses simple engineering approximations for clarity and teaching purposes. For high-precision projects, include generator-specific fuel curves and PV performance ratio.</p>
+
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">References available in the report document.</div>
+  </footer>
+
+  <script src="common.js"></script>
+</body>
+</html>

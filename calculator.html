@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Calculator - Sustainable Energy and Urban Green Mitigation</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-green">
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo small">Sustainable Energy and Urban Green Mitigation</h1>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="calculator.html" class="active">Calculator</a>
+        <a href="theory.html">Carbon Theory</a>
+        <a href="trees.html">Urban Trees</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container">
+      <h2>Carbon Calculator (3-step)</h2>
+      <p>Follow the steps to input diesel and solar parameters. Use Karachi-defaults provided.</p>
+
+      <div class="step" id="step1">
+        <h3>Step 1 — Diesel generator</h3>
+        <label>Generator Power (kW) <input id="genPower" type="number" value="10"></label>
+        <label>Operating Hours/day <input id="hours" type="number" value="8"></label>
+        <label>Fuel efficiency (L/hour) <input id="fuelEff" type="number" value="2.2" step="0.01"></label>
+        <label>Diesel Price (PKR/L) <input id="dieselPrice" type="number" value="285"></label>
+        <label>CO₂ Factor (kg/L) <input id="co2Factor" type="number" value="2.68" step="0.01"></label>
+        <div class="actions"><button onclick="goToStep2()">Next →</button></div>
+      </div>
+
+      <div class="step" id="step2" style="display:none;">
+        <h3>Step 2 — Solar system</h3>
+        <label>Solar capacity (kW) <input id="solarCap" type="number" value="10"></label>
+        <label>Average sun hours/day <input id="sunHours" type="number" value="5.5" step="0.1"></label>
+        <label>Installation cost (PKR) <input id="installCost" type="number" value="1500000"></label>
+        <label>Annual maintenance (PKR) <input id="maintCost" type="number" value="20000"></label>
+        <div class="actions">
+          <button onclick="goToStep1()">← Back</button>
+          <button onclick="goToStep3()">Next →</button>
+        </div>
+      </div>
+
+      <div class="step" id="step3" style="display:none;">
+        <h3>Step 3 — Results</h3>
+        <div class="results">
+          <div class="result-row"><span>Fuel per day:</span><strong id="fuelDay">–</strong> L</div>
+          <div class="result-row"><span>CO₂ per day:</span><strong id="co2Day">–</strong> kg</div>
+          <div class="result-row"><span>Diesel cost per day:</span><strong id="costDay">–</strong> PKR</div>
+          <div class="result-row"><span>Diesel energy/day:</span><strong id="dieselEnergy">–</strong> kWh</div>
+          <div class="result-row"><span>Solar energy/day:</span><strong id="solarEnergy">–</strong> kWh</div>
+          <div class="result-row"><span>Annual CO₂ saved:</span><strong id="annualCO2">–</strong> kg</div>
+          <div class="result-row"><span>Payback period:</span><strong id="payback">–</strong> years</div>
+        </div>
+        <div class="actions">
+          <button onclick="goToStep2()">← Back</button>
+          <button onclick="calculate()">Calculate</button>
+        </div>
+        <p class="notes">Tip: use the Karachi default values in the About page as references for your report.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">Department of Civil Engineering • NED University</div>
+  </footer>
+
+  <script src="common.js"></script>
+  <script src="calc.js"></script>
+</body>
+</html>
