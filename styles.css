@@ -120,6 +120,51 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     border-bottom: 1px solid #eee;
     padding: 10px 0;
 }
+/* Long-Form Readable Text Style */
+.human-rationale {
+    padding: 60px 0;
+    max-width: 900px; /* Limits width so lines aren't too long to read */
+    margin: 0 auto;
+}
+
+.section-title {
+    color: #0b7a43;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.info-block {
+    margin-bottom: 50px;
+}
+
+.info-block h3 {
+    color: #1a5c38;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e0eee0;
+    padding-bottom: 10px;
+}
+
+.info-block p {
+    font-size: 1.15rem;
+    line-height: 1.8; /* Increased spacing for easier reading */
+    color: #333;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.info-block strong {
+    color: #0b7a43;
+}
+
+/* Add a subtle highlight for the Karachi specifics */
+.info-block p:last-child {
+    border-left: 4px solid #0b7a43;
+    padding-left: 20px;
+    background: #fdfdfd;
+}
 
 /* This targets the number specifically to align them vertically */
 .results p span {
