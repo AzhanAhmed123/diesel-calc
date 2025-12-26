@@ -30,7 +30,8 @@ function calculate(){
   const annualSavings = Math.max(0, annualFuelCost * replacedFraction - maint);
   const payback = annualSavings>0? (install/annualSavings):0;
 
-  // ANIMATING ALL RESULTS WITH 2 DECIMAL PLACES
+  // ... (keep all your math variables like annualCO2saved)
+  // ANIMATING ALL RESULTS (Keep these lines)
   animateValue("fuelDay", 0, fuelDay, 1000);
   animateValue("co2Day", 0, co2Day, 1000);
   animateValue("costDay", 0, costDay, 1000);
@@ -38,23 +39,21 @@ function calculate(){
   animateValue("solarEnergy", 0, solarEnergy, 1000);
   animateValue("annualCO2", 0, annualCO2saved, 1200);
   animateValue("payback", 0, payback, 1000);
-    // 1. First, run your existing math formulas here...
-    // (Ensure variables like annualCO2 are calculated)
-
-    // 2. Get the result value from the strong tag
-    let co2Val = document.getElementById('annualCO2').innerText;
-    let numericCO2 = parseFloat(co2Val.replace(/,/g, '')) || 0;
-
-    // 3. Math: Trees = CO2 / 22
-    let trees = Math.round(numericCO2 / 22);
-    document.getElementById('tree-count-hero').innerText = trees;
-
-    // 4. HIDE the white box (the section container)
+  // EDIT HERE: Add these lines at the end of the function
+  const trees = Math.round(annualCO2saved / 22);
+  const heroDisplay = document.getElementById('tree-count-hero');
+  if (heroDisplay) {
+    heroDisplay.innerText = trees.toLocaleString();
+  }
+  // Give the animation 1.5 seconds to finish before switching screens
+  setTimeout(() => {
     document.querySelector('section.container').style.display = 'none';
-
-    // 5. SHOW the new impact result page
     document.getElementById('final-impact').style.display = 'block';
-} 
+  }, 1500);
+
+} // This is the final closing bracket for the calculate function
+
+  
 
 function animateValue(id, start, end, duration) {
     let obj = document.getElementById(id);
@@ -85,6 +84,7 @@ function animateValue(id, start, end, duration) {
     }
     requestAnimationFrame(run);
 }
+
 
 
 
