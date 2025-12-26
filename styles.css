@@ -586,69 +586,47 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     max-height: none !important;
     height: auto !important;
 }
-/* Styling the visible title at the top */
+/* --- BRANDED WHITE HEADER TEXT --- */
 .brand-title {
     text-align: center;
-    padding-top: 20px;
-    font-family: 'Segoe UI', sans-serif;
+    margin-top: 20px;
+    padding-bottom: 10px;
 }
 
 .brand-title h1 {
+    color: #ffffff !important; /* Forces White Title */
     font-size: 1.8rem;
-    color: #2d6a4f; /* Engineering Green */
-    margin: 0;
     text-transform: uppercase;
     letter-spacing: 1px;
+    margin: 0;
 }
 
 .brand-title p {
-    font-size: 0.9rem;
-    color: #666;
-    margin-top: 5px;
-    font-weight: 500;
-}
-
-/* Adjusting the nav margin so it doesn't overlap the title */
-.cool-nav {
-    margin: 50px auto 20px auto !important; 
-}
-/* Visible Title Styling */
-.main-project-title {
-    color: #2d6a4f;
-    text-align: center;
-    font-size: 1.5rem;
-    margin-bottom: 40px;
-    font-family: sans-serif;
+    color: #ffffff !important; /* Forces White Name */
+    font-size: 1.1rem;
     font-weight: bold;
+    margin-top: 8px;
+    letter-spacing: 0.5px;
 }
 
-/* The Dark Floating Bar */
+/* --- THE DARK NAV BAR --- */
 .cool-nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #1a1c22; /* Dark grey from your reference */
+    background: #1a1c22; /* Dark background from your photo */
     padding: 10px 20px;
     border-radius: 50px;
     width: fit-content;
-    margin: 0 auto;
+    margin: 50px auto 20px auto; 
     height: 60px;
     position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
-.nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color: #999; /* Faded color for non-active icons */
-    margin: 0 15px;
-    font-size: 11px;
-}
-
-/* The Blue Popped-Out Circle */
+/* --- THE DARK GREEN ACTIVE CIRCLE --- */
 .active-circle {
-    background: #00a8ff; /* Branded Blue */
+    background: #1b4332 !important; /* Branded Dark Green */
     width: 65px;
     height: 65px;
     border-radius: 50%;
@@ -656,63 +634,29 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: -35px; /* Pops it up */
-    border: 5px solid #f4f7f6; /* Change this to match your page background color */
-    box-shadow: 0 5px 15px rgba(0, 168, 255, 0.4);
+    top: -35px; /* Makes it pop out of the top */
+    border: 5px solid #2d6a4f; /* Matches your site background color */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #bbbbbb; /* Faded grey for non-active icons */
+    margin: 0 12px;
+    font-size: 10px;
+    transition: 0.3s;
 }
 
 .nav-item.active i {
-    color: white;
-    font-size: 1.4rem;
+    color: #ffffff;
+    font-size: 1.5rem;
 }
 
 .nav-item.active span {
-    color: white;
-    margin-top: 38px; /* Pushes text below the circle */
+    margin-top: 40px; /* Pushes text below the green circle */
+    color: #ffffff;
     font-weight: bold;
 }
-
-.nav-item i {
-    font-size: 1.2rem;
-    margin-bottom: 3px;
-}
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home - Sustainable Energy and Urban Green Mitigation</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
-</head>
-
-<body class="theme-green">
-  <header class="site-header">
-    <div class="container">
-      <div class="brand-title">
-        <h1>Sustainable Energy & Urban Green Mitigation</h1>
-        <p>Developed by Engr. Azhan Ahmed</p>
-      </div>
-
-      <nav class="cool-nav">
-        <a href="index.html" class="nav-item active">
-          <div class="active-circle">
-            <i class="fa-solid fa-house"></i>
-          </div>
-          <span>Home</span>
-        </a>
-        <a href="calculator.html" class="nav-item">
-          <i class="fa-solid fa-calculator"></i>
-          <span>Calculator</span>
-        </a>
-        <a href="theory.html" class="nav-item">
-          <i class="fa-solid fa-book"></i>
-          <span>Theory</span>
-        </a>
-        <a href="about.html" class="nav-item">
-          <i class="fa-solid fa-user"></i>
-          <span>About</span>
-        </a>
-      </nav>
-    </div>
-  </header>
