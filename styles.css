@@ -286,12 +286,14 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     padding: 100px 0;
 }
 
-/* 1. Diesel Background (Generator with smoke) */
 .diesel-bg {
+    /* This tells the website to look for the file you just uploaded */
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                      url('https://images.unsplash.com/photo-1581094288338-2314dddb7bc3?q=80&w=1600');
+                      url('generator.jpg'); 
+    background-size: cover;
+    background-position: center;
+    min-height: 80vh;
 }
-
 /* 2. Solar Background (Sun/Solar Panels) */
 .solar-bg {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
