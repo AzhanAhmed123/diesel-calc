@@ -261,51 +261,28 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     font-size: 1.1rem;
 }
 
-/* Optimized Base Section */
 .full-bg-section {
-    position: relative;
     width: 100%;
-    min-height: 100vh; 
+    min-height: 80vh; /* This forces the section to be tall */
     display: flex;
     align-items: center;
-    justify-content: center;
-    
-    /* Simplified Background Settings */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /* Removed background-attachment entirely to fix mobile/GitHub bugs */
-    
-    margin: 0;
-    padding: 100px 20px;
+    /* Removed background-attachment: fixed because it is buggy on GitHub Pages */
 }
 
-/* Updated Image Links (Using slightly different Unsplash parameters) */
 .diesel-img {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
-                      url('https://images.unsplash.com/photo-1581094288338-2314dddb7bc3?auto=format&fit=crop&w=1600&q=80');
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                      url('https://images.unsplash.com/photo-1581094288338-2314dddb7bc3?q=80&w=1200');
 }
 
 .solar-img {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
-                      url('https://images.unsplash.com/photo-1509391366360-feaffa64d48b?auto=format&fit=crop&w=1600&q=80');
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                      url('https://images.unsplash.com/photo-1509391366360-feaffa64d48b?q=80&w=1200');
 }
 
 .tree-img {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
-                      url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1600&q=80');
-}
-
-/* Extra safety for the glass card visibility */
-.full-bg-section .glass-card {
-    background: rgba(0, 0, 0, 0.4); /* Darker base for better contrast */
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 40px;
-    border-radius: 25px;
-    max-width: 800px;
-    width: 100%;
-    position: relative;
-    z-index: 2;
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                      url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1200');
 }
