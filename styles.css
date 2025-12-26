@@ -261,117 +261,57 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     font-size: 1.1rem;
 }
 
-/* Yellow Highlights for Trees */
-.highlight {
-    color: #ffeb3b; 
-    font-weight: bold;
-}
-/* Tree Container Layout */
-.tree-container {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    overflow: hidden;
-}
-
-.tree {
-    position: relative;
-    width: 120px;
-    height: 150px;
-    flex-shrink: 0;
-}
-
-/* The Trunk */
-.trunk {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 15px;
-    height: 60px;
-    background: #5d4037;
-    transform: translateX(-50%);
-    border-radius: 4px;
-}
-
-/* The Leafy Top */
-.canopy {
-    position: absolute;
-    bottom: 45px;
-    left: 50%;
-    width: 100px;
-    height: 100px;
-    background: #2e7d32;
-    border-radius: 50%;
-    transform: translateX(-50%);
-    animation: sway 4s ease-in-out infinite;
-}
-
-/* Individual Blowing Leaves */
-.leaf {
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    background: #81c784;
-    border-radius: 15px 0;
-    opacity: 0;
-}
-
-/* Leaf Positions and Animation Timing */
-.leaf:nth-child(1) { top: 10px; left: 20px; animation: blow 3s infinite 0s; }
-.leaf:nth-child(2) { top: 30px; left: 50px; animation: blow 3s infinite 0.5s; }
-.leaf:nth-child(3) { top: 50px; left: 10px; animation: blow 3s infinite 1s; }
-.leaf:nth-child(4) { top: 20px; left: 70px; animation: blow 3s infinite 1.5s; }
-.leaf:nth-child(5) { top: 60px; left: 40px; animation: blow 3s infinite 2s; }
-
-/* The "Blowing" Animation */
-@keyframes blow {
-    0% {
-        transform: translate(0, 0) rotate(0deg);
-        opacity: 0;
-    }
-    20% { opacity: 1; }
-    80% { opacity: 1; }
-    100% {
-        transform: translate(100px, -40px) rotate(90deg);
-        opacity: 0;
-    }
-}
-
-/* The "Swaying" Tree Animation */
-@keyframes sway {
-    0%, 100% { transform: translateX(-50%) rotate(-8deg); }
-    50% { transform: translateX(-50%) rotate(8deg); }
-}
-
 /* 1. Base section setup */
 .full-bg-section {
     position: relative;
     width: 100%;
-    min-height: 100vh; /* This ensures the section is at least as tall as the screen */
+    /* Changed min-height to ensure it's visible */
+    min-height: 100vh; 
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    /* Image Settings */
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* Parallax effect */
-    z-index: 1;
+    
+    /* IMPORTANT: If images still don't show, change 'fixed' to 'scroll' */
+    background-attachment: scroll; 
+    
+    overflow: hidden;
+    margin: 0;
+    padding: 100px 0;
 }
 
-/* 2. Specific Backgrounds with dark overlays */
-/* Note: Using linear-gradient first acts as a 'tint' so white text stays readable */
-
+/* 2. Specific Backgrounds with Direct Links */
 .diesel-img {
-    background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
-                      url('https://images.unsplash.com/photo-1581094288338-2314dddb7bc3?auto=format&fit=crop&q=80&w=1200');
+    background-color: #1a1a1a; /* Dark fallback */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                      url('https://images.unsplash.com/photo-1581094288338-2314dddb7bc3?q=80&w=1200');
 }
 
 .solar-img {
-    background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), 
-                      url('https://images.unsplash.com/photo-1509391366360-feaffa64d48b?auto=format&fit=crop&q=80&w=1200');
+    background-color: #054d2a; /* Green fallback */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                      url('https://images.unsplash.com/photo-1509391366360-feaffa64d48b?q=80&w=1200');
 }
 
 .tree-img {
-    background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), 
-                      url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=1200');
+    background-color: #2d5a27; /* Forest fallback */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                      url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1200');
+}
+
+/* 3. Make the Glass Card readable against the background */
+.full-bg-section .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 40px;
+    border-radius: 25px;
+    max-width: 800px;
+    width: 90%;
+    margin: 0 auto;
 }
