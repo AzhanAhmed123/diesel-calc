@@ -261,57 +261,51 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     font-size: 1.1rem;
 }
 
-/* 1. Base section setup */
+/* Optimized Base Section */
 .full-bg-section {
     position: relative;
     width: 100%;
-    /* Changed min-height to ensure it's visible */
     min-height: 100vh; 
     display: flex;
     align-items: center;
     justify-content: center;
     
-    /* Image Settings */
+    /* Simplified Background Settings */
     background-size: cover;
-    background-position: center center;
+    background-position: center;
     background-repeat: no-repeat;
+    /* Removed background-attachment entirely to fix mobile/GitHub bugs */
     
-    /* IMPORTANT: If images still don't show, change 'fixed' to 'scroll' */
-    background-attachment: scroll; 
-    
-    overflow: hidden;
     margin: 0;
-    padding: 100px 0;
+    padding: 100px 20px;
 }
 
-/* 2. Specific Backgrounds with Direct Links */
+/* Updated Image Links (Using slightly different Unsplash parameters) */
 .diesel-img {
-    background-color: #1a1a1a; /* Dark fallback */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                      url('https://images.unsplash.com/photo-1581094288338-2314dddb7bc3?q=80&w=1200');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+                      url('https://images.unsplash.com/photo-1581094288338-2314dddb7bc3?auto=format&fit=crop&w=1600&q=80');
 }
 
 .solar-img {
-    background-color: #054d2a; /* Green fallback */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                      url('https://images.unsplash.com/photo-1509391366360-feaffa64d48b?q=80&w=1200');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
+                      url('https://images.unsplash.com/photo-1509391366360-feaffa64d48b?auto=format&fit=crop&w=1600&q=80');
 }
 
 .tree-img {
-    background-color: #2d5a27; /* Forest fallback */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                      url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1200');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
+                      url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1600&q=80');
 }
 
-/* 3. Make the Glass Card readable against the background */
+/* Extra safety for the glass card visibility */
 .full-bg-section .glass-card {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.4); /* Darker base for better contrast */
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 40px;
     border-radius: 25px;
     max-width: 800px;
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 2;
 }
