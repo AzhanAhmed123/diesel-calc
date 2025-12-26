@@ -568,3 +568,21 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
         flex-direction: column;
     }
 }
+#step3 {
+    transition: all 0.5s ease-in-out; /* Smoothly expands the box */
+}
+
+#final-impact {
+    animation: fadeIn 1s; /* Subtle fade-in for the images */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Ensure the white box expands to fit everything */
+.container {
+    max-height: none !important;
+    height: auto !important;
+}
