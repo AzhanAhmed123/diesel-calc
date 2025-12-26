@@ -362,15 +362,6 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     animation: vibrate 0.1s infinite;
 }
 
-.smoke {
-    position: absolute;
-    top: 15%; /* Adjust this to your exhaust pipe location */
-    left: 50%; /* Adjust this to your exhaust pipe location */
-    width: 60px;
-    opacity: 0;
-    pointer-events: none;
-    filter: grayscale(1) brightness(0.3) blur(1px);
-}
 
 /* Smoke layers */
 .back-smoke { z-index: 2; animation: exhaust-flow 5s infinite; }
@@ -385,18 +376,6 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     100% { transform: translate(0, 0) rotate(0deg); }
 }
 
-/* Smoke Flow Animation */
-@keyframes exhaust-flow {
-    0% {
-        transform: translate(0, 0) scale(0.3);
-        opacity: 0;
-    }
-    20% { opacity: 0.6; }
-    100% {
-        transform: translate(120px, -100px) scale(3);
-        opacity: 0;
-    }
-}
 .generator-container {
     /* Absolute keeps it from pushing the 'Next' button down */
     position: absolute; 
@@ -422,14 +401,6 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
 #step1 label {
     margin-bottom: 10px; 
     max-width: 60%;     /* Keeps text on the left so it doesn't hit the generator */
-}
-@keyframes exhaust-flow {
-    0% { transform: translate(0, 0) scale(0.3); opacity: 0; }
-    100% {
-        /* -80px moves it left towards your text, staying inside the box */
-        transform: translate(-80px, -120px) scale(2.5); 
-        opacity: 0;
-    }
 }
 .smoke {
     position: absolute;
