@@ -431,3 +431,27 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
         opacity: 0;
     }
 }
+/* This applies to ALL screens (Mobile First) */
+.generator-container {
+    position: relative; /* On mobile, it stays in line below the inputs */
+    width: 200px;       /* Your preferred larger size */
+    margin: 20px auto;  /* Centers it on mobile */
+    text-align: center;
+    z-index: 10;
+}
+
+/* This only applies to Desktop/Tablet (screens wider than 768px) */
+@media (min-width: 768px) {
+    .generator-container {
+        position: absolute;
+        top: 50%;
+        right: 5px;     /* Your 'more to the right' setting */
+        transform: translateY(-50%);
+        margin: 0;      /* Removes the mobile centering margin */
+    }
+    
+    .step {
+        position: relative;
+        min-height: 250px;
+    }
+}
