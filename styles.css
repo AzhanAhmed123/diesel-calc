@@ -346,111 +346,72 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
         transform: rotate(720deg) translateY(20px); /* Down and spin */
     }
 }
+/* --- MOBILE (Default) --- */
 .generator-container {
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-    margin: 20px auto;
+    position: relative; /* Stacks below text on mobile to avoid overlap */
+    width: 200px;       /* Good size for mobile screens */
+    margin: 15px auto;  /* Centers it and creates small vertical gap */
     text-align: center;
+    z-index: 5;
 }
 
 .generator-img {
     width: 100%;
     position: relative;
-    z-index: 5;
-    /* This makes the generator vibrate */
+    z-index: 6;
     animation: vibrate 0.1s infinite;
 }
 
-
-/* Smoke layers */
-.back-smoke { z-index: 2; animation: exhaust-flow 5s infinite; }
-.front-smoke { z-index: 8; animation: exhaust-flow 5s infinite 2.5s; }
-
-/* Engine Vibration Animation */
-@keyframes vibrate {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(1px, 1px) rotate(0.1deg); }
-    50% { transform: translate(-1px, -1px) rotate(-0.1deg); }
-    75% { transform: translate(1px, -1px) rotate(0.1deg); }
-    100% { transform: translate(0, 0) rotate(0deg); }
-}
-
-.generator-container {
-    /* Absolute keeps it from pushing the 'Next' button down */
-    position: absolute; 
-    top: 50%;           /* Moves it towards the vertical center of the box */
-    right: -20px;        /* Anchors it to the right */
-    transform: translateY(-50%); /* Perfectly centers it vertically */
-    
-    /* Smaller size to prevent vertical stretching */
-    width: 190px;       
-    margin: 0;          /* Removes margins that create extra white space */
-    padding: 0;
-    z-index: 10;
-}
-
-/* Make sure the white step box doesn't have too much empty 'air' */
-.step {
-    position: relative; /* Required for the absolute generator to stay inside */
-    padding: 20px 40px; /* Tightens the top and bottom gaps */
-    min-height: 250px;  /* Ensures room for the generator without being too tall */
-}
-
-/* Tighten the space between your input labels */
-#step1 label {
-    margin-bottom: 10px; 
-    max-width: 60%;     /* Keeps text on the left so it doesn't hit the generator */
-}
 .smoke {
     position: absolute;
-    top: 30%; /* Adjust this to match the silver exhaust hole on your Honda generator */
-    left: 75%; /* Moves smoke to the right side where the exhaust is */
+    top: 35%; 
+    left: 75%; 
     width: 100px;
     opacity: 0;
     pointer-events: none;
-    
-    /* ADD THIS: This hides the grey background of your JPG smoke */
     mix-blend-mode: multiply; 
-    filter: grayscale(1) contrast(2);
-    
-    z-index: 10; /* Ensures it sits on top of the white box */
+    filter: grayscale(1) contrast(2.5) brightness(0.5); /* Higher visibility */
+    z-index: 10;
 }
 
-/* Update the animation to ensure it becomes visible */
-@keyframes exhaust-flow {
-    0% { 
-        transform: translate(0, 0) scale(0.2); 
-        opacity: 0; 
-    }
-    20% { 
-        opacity: 1; /* Make sure this is high enough to see */
-    }
-    100% {
-        transform: translate(-100px, -150px) scale(4); /* Blows smoke UP and LEFT */
-        opacity: 0;
-    }
-}
-/* --- MOBILE SETTINGS (Default) --- */
-.generator-container {
-    position: relative; /* Moves below inputs on mobile */
-    width: 200px;       /* Increased size as requested */
-    margin: 10px auto;  /* Centers it and adds a small gap */
-    text-align: center;
-    z-index: 5;
-}
-
-/* --- DESKTOP SETTINGS (Large Screens) --- */
+/* --- DESKTOP (Screens wider than 768px) --- */
 @media (min-width: 768px) {
     .generator-container {
-        position: absolute;
+        position: absolute; /* Floats to the right on desktop */
         top: 50%;
-        right: 0px;     /* Moved more to the right */
+        right: 0px;        /* Pushed to the far right edge */
         transform: translateY(-50%);
         margin: 0;
-        width: 250px;   /* Even larger on desktop */
+        width: 260px;      /* Larger size for big screens */
     }
+
     #step1 label {
-        max-width: 55%; /* Keeps text on the left away from image */
+        max-width: 55%;    /* Prevents text from hitting the image */
+    }
+
+    .step {
+        position: relative;
+        min-height: 250px; /* Keeps the box from shrinking too much */
     }
 }
+
+/* --- ANIMATIONS --- */
+@keyframes vibrate {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(1px, -1px); }
+    100% { transform: translate(0, 0); }
+}
+
+@keyframes exhaust-flow {
+    0% { transform: translate(0, 0) scale(0.4); opacity: 0; }
+    20% { opacity: 1; } /* Makes smoke appear instantly */
+    100% { 
+        /* Drifts up and left so it stays inside the card */
+        transform: translate(-120px, -180px) scale(5); 
+        opacity: 0; 
+    }
+}
+
+.back-smoke { z-index: 2; animation: exhaust-flow 5s infinite; }
+.front-smoke { z-index: 8; animation: exhaust-flow 5s infinite 2.5s; }
+
