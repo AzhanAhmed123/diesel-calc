@@ -431,27 +431,26 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
         opacity: 0;
     }
 }
-/* This applies to ALL screens (Mobile First) */
+/* --- MOBILE SETTINGS (Default) --- */
 .generator-container {
-    position: relative; /* On mobile, it stays in line below the inputs */
-    width: 200px;       /* Your preferred larger size */
-    margin: 20px auto;  /* Centers it on mobile */
+    position: relative; /* Moves below inputs on mobile */
+    width: 200px;       /* Increased size as requested */
+    margin: 10px auto;  /* Centers it and adds a small gap */
     text-align: center;
-    z-index: 10;
+    z-index: 5;
 }
 
-/* This only applies to Desktop/Tablet (screens wider than 768px) */
+/* --- DESKTOP SETTINGS (Large Screens) --- */
 @media (min-width: 768px) {
     .generator-container {
         position: absolute;
         top: 50%;
-        right: 5px;     /* Your 'more to the right' setting */
+        right: 0px;     /* Moved more to the right */
         transform: translateY(-50%);
-        margin: 0;      /* Removes the mobile centering margin */
+        margin: 0;
+        width: 250px;   /* Even larger on desktop */
     }
-    
-    .step {
-        position: relative;
-        min-height: 250px;
+    #step1 label {
+        max-width: 55%; /* Keeps text on the left away from image */
     }
 }
