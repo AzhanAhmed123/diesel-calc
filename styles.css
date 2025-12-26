@@ -505,3 +505,68 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
         opacity: 0; /* Fades out as it hits the panel */
     }
 }
+### 2. CSS for the "Full Page" Look
+Add this to `styles.css`. This ensures the images aren't squeezed and the "Green City" looks like a horizon at the bottom.
+
+```css
+#final-impact {
+    width: 100%;
+    padding: 50px 0 0 0;
+    text-align: center;
+    background: #ffffff; /* Or match your site background */
+}
+
+.impact-wrapper {
+    max-width: 1100px; /* Wider than your white box */
+    margin: 0 auto;
+}
+
+.sust-logo {
+    width: 250px;
+    margin-bottom: 30px;
+}
+
+.impact-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    background: #f0fdf4; /* Light green success background */
+    padding: 40px;
+    border-radius: 30px;
+    margin: 0 20px;
+}
+
+.tree-img {
+    width: 200px;
+    height: auto;
+}
+
+.impact-text h2 {
+    font-size: 4rem;
+    color: #166534;
+    margin: 0;
+}
+
+.landscape-container {
+    width: 100%;
+    margin-top: 50px;
+    overflow: hidden;
+}
+
+.city-footer {
+    width: 100%;
+    display: block;
+    max-height: 400px;
+    object-fit: cover; /* Keeps it looking like a scenery horizon */
+}
+
+/* Mobile stacking logic */
+@media (max-width: 768px) {
+    .impact-card {
+        flex-direction: column;
+        padding: 20px;
+    }
+    .tree-img { width: 150px; }
+    .sust-logo { width: 200px; }
+}
