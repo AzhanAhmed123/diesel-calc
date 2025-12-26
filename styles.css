@@ -380,7 +380,7 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     /* Absolute keeps it from pushing the 'Next' button down */
     position: absolute; 
     top: 50%;           /* Moves it towards the vertical center of the box */
-    right: 20px;        /* Anchors it to the right */
+    right: 10px;        /* Anchors it to the right */
     transform: translateY(-50%); /* Perfectly centers it vertically */
     
     /* Smaller size to prevent vertical stretching */
