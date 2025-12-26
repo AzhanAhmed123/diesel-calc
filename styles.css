@@ -586,3 +586,29 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     max-height: none !important;
     height: auto !important;
 }
+/* Styling the visible title at the top */
+.brand-title {
+    text-align: center;
+    padding-top: 20px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.brand-title h1 {
+    font-size: 1.8rem;
+    color: #2d6a4f; /* Engineering Green */
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.brand-title p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+/* Adjusting the nav margin so it doesn't overlap the title */
+.cool-nav {
+    margin: 50px auto 20px auto !important; 
+}
