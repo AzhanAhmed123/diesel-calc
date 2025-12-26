@@ -272,32 +272,9 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     /* Removed background-attachment: fixed because it is buggy on GitHub Pages */
 }
 
-.diesel-img {
-    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                      url('https://images.unsplash.com/photo-1581094288338-2314dddb7bc3?q=80&w=1200');
-}
 
-.solar-img {
-    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                      url('https://images.unsplash.com/photo-1509391366360-feaffa64d48b?q=80&w=1200');
-}
 
-.tree-img {
-    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                      url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1200');
-}
-.diesel-bg-section {
-    position: relative;
-    /* This link points to a generator image with smoke/exhaust vibes */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                      url('https://images.unsplash.com/photo-1581094288338-2314dddb7bc3?q=80&w=1600');
-    background-size: cover;
-    background-position: center;
-    background-attachment: scroll; /* Change to 'fixed' for a parallax effect */
-    padding: 80px 0;
-}
-
-/* Base style for all background sections */
+/* Base style for the sections */
 .rationale-section {
     width: 100%;
     min-height: 80vh;
@@ -309,20 +286,20 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     padding: 100px 0;
 }
 
-/* 1. Diesel Generator Background */
+/* 1. Diesel Background (Generator with smoke) */
 .diesel-bg {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
                       url('https://images.unsplash.com/photo-1581094288338-2314dddb7bc3?q=80&w=1600');
 }
 
-/* 2. Solar Panels Background */
+/* 2. Solar Background (Sun/Solar Panels) */
 .solar-bg {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
                       url('https://images.unsplash.com/photo-1509391366360-feaffa64d48b?q=80&w=1600');
 }
 
-/* 3. Lush Trees Background */
+/* 3. Tree Background (Lush Greenery) */
 .tree-bg {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
                       url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1600');
 }
