@@ -6,7 +6,7 @@ function goToStep3(){
   setVisibility('step3'); 
   calculate();          
 }
-function setVisibility(id){['step1','step2','step3'].forEach(x=>document.getElementById(x).style.display=(x===id?'block':'none'))}
+function setVisibility(id){['step1','step2','step3','final-impact'].forEach(x=>document.getElementById(x).style.display=(x===id?'block':'none'))}
 
 function calculate(){
   const P = Number(document.getElementById('genPower').value)||0;
@@ -55,7 +55,6 @@ function calculate(){
 
     // 5. SHOW the new impact result page
     document.getElementById('final-impact').style.display = 'block';
-}
 } 
 
 function animateValue(id, start, end, duration) {
@@ -87,4 +86,5 @@ function animateValue(id, start, end, duration) {
     }
     requestAnimationFrame(run);
 }
+
 
