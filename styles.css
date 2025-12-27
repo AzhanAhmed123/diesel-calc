@@ -660,3 +660,41 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     color: #ffffff;
     font-weight: bold;
 }
+/* Layout to align Logo - Title - Nav */
+.header-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 10px 0;
+}
+
+/* Logo styling */
+.logo-box {
+  flex-shrink: 0; /* Prevents logo from squishing */
+}
+
+.header-logo {
+  height: 80px; /* Adjust size as needed */
+  width: auto;
+  display: block;
+  /* Since your logo has a dark green circle, it will look great 
+     on your green header if you have a transparent background. */
+}
+
+/* Ensure brand title stays prominent */
+.brand-title {
+  flex-grow: 1;
+  text-align: left; /* Optional: set to center if you prefer */
+}
+
+/* Fix for small screens */
+@media (max-width: 992px) {
+  .header-layout {
+    flex-direction: column;
+    text-align: center;
+  }
+  .brand-title {
+    text-align: center;
+  }
+}
