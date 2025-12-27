@@ -9,16 +9,14 @@
   <link rel="stylesheet" href="styles.css">
 
   <style>
-    /* 1. Background Image - Tree on the Right */
+    /* 1. Reset to White Background */
     body { 
       margin: 0;
       padding: 0;
-      /* Using your team-bg.png, aligned to the right */
-      background: linear-gradient(rgba(11, 15, 13, 0.85), rgba(11, 15, 13, 0.85)), 
-                  url('team-bg.png') no-repeat right center fixed;
-      background-size: cover;
-      color: #ffffff;
-      overflow-x: hidden; /* Important to hide smoke overflow */
+      background: #ffffff; /* Pure white background */
+      color: #2c3e50;    /* Dark professional text color */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden; /* Prevents smoke from causing horizontal scroll */
     }
 
     /* 2. Smoke Animation Styling */
@@ -28,38 +26,47 @@
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1; /* Behind text, above bg image */
+      z-index: -1; /* Behind text */
       pointer-events: none;
-      opacity: 0.35;
+      opacity: 0.12; /* Very subtle on white background */
     }
 
     .smoke-cloud {
       position: absolute;
-      width: 250%; /* Larger than screen for movement */
-      height: 250%;
-      background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png'); 
-      filter: url(#turbulent-smoke); /* Links to the SVG filter below */
-      animation: drift-random 45s linear infinite;
+      width: 300%; 
+      height: 200%;
+      /* Darker texture to ensure it's visible on white */
+      background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png'); 
+      filter: url(#turbulent-smoke); 
+      animation: drift-random 50s linear infinite;
     }
 
     @keyframes drift-random {
-      0% { transform: translate(-30%, 0); }
-      50% { transform: translate(0%, -5%); }
+      0% { transform: translate(-40%, 0); }
+      50% { transform: translate(-10%, -5%); }
       100% { transform: translate(30%, -10%); }
     }
 
-    /* Ensuring main content stays readable */
-    main {
-      position: relative;
-      z-index: 1;
-      padding-top: 40px;
+    /* Content Layout Adjustments */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
     }
 
-    section.container {
-      background: rgba(0, 0, 0, 0.4);
-      padding: 30px;
-      border-radius: 20px;
-      backdrop-filter: blur(5px);
+    h2, h3 {
+      color: #27ae60; /* Green accents for the theme */
+    }
+
+    main {
+      padding: 40px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    li {
+      margin-bottom: 10px;
+      line-height: 1.6;
     }
   </style>
 </head>
@@ -69,9 +76,9 @@
   <svg width="0" height="0" style="position: absolute;">
     <filter id="turbulent-smoke">
       <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="5">
-        <animate attributeName="baseFrequency" dur="40s" values="0.012;0.025;0.012" repeatCount="indefinite" />
+        <animate attributeName="baseFrequency" dur="40s" values="0.012;0.022;0.012" repeatCount="indefinite" />
       </feTurbulence>
-      <feDisplacementMap in="SourceGraphic" scale="120" />
+      <feDisplacementMap in="SourceGraphic" scale="100" />
     </filter>
   </svg>
   
@@ -82,8 +89,8 @@
   <header class="site-header">
     <div class="container">
       <div class="brand-title">
-        <h1>Sustainable Energy & Urban Green Mitigation</h1>
-        <p>Developed by Engr. Azhan Ahmed</p>
+        <h1 style="color: #ffffff;">Sustainable Energy & Urban Green Mitigation</h1>
+        <p style="color: #ffffff; opacity: 0.9;">Developed by Engr. Azhan Ahmed</p>
       </div>
 
       <nav class="cool-nav">
@@ -115,7 +122,7 @@
 
   <main>
     <section class="container">
-      <h2 style="color: #2ecc71;">Carbon & Fuel Theory</h2>
+      <h2>Carbon & Fuel Theory</h2>
       <p>This page explains the core formulas used by the calculator and the sources for default values (Karachi-based).</p>
 
       <h3>Key Equations</h3>
@@ -128,21 +135,21 @@
         <li><strong>Payback (years)</strong> = Installation cost / Annual savings</li>
       </ol>
 
-      <h3>Default Karachi values and sources</h3>
+      <h3>Default Karachi Values and Sources</h3>
       <ul>
-        <li>Diesel price: 285 PKR/L (PSO retail prices, 2024)</li>
-        <li>Sun hours: 5.5 h/day (NREL / AEDB datasets)</li>
-        <li>CO₂ factor: 2.68 kg CO₂/L (IPCC)</li>
-        <li>Fuel efficiency (example): 2.2 L/h for a 10 kW genset (manufacturer curves)</li>
+        <li><strong>Diesel price:</strong> 285 PKR/L (PSO retail prices, 2024)</li>
+        <li><strong>Sun hours:</strong> 5.5 h/day (NREL / AEDB datasets)</li>
+        <li><strong>CO₂ factor:</strong> 2.68 kg CO₂/L (IPCC)</li>
+        <li><strong>Fuel efficiency (example):</strong> 2.2 L/h for a 10 kW genset (manufacturer curves)</li>
       </ul>
 
-      <h3>Notes on assumptions</h3>
-      <p>All assumptions are cited in the report. The calculator uses simple engineering approximations for clarity and teaching purposes.</p>
+      <h3>Notes on Assumptions</h3>
+      <p>All assumptions are cited in the report. The calculator uses simple engineering approximations for clarity and teaching purposes. For high-precision projects, include generator-specific fuel curves and PV performance ratio.</p>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">References available in the report document.</div>
+    <div class="container">References available in the report document. Prepared for NED University.</div>
   </footer>
 
   <script src="common.js"></script>
