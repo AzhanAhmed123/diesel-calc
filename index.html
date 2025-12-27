@@ -40,54 +40,35 @@
     </div>
   </header>
 
-
-
-
   <main>
-
     <section class="hero">
-
       <div class="hero-overlay"></div>
-
       <div class="container hero-content">
-
         <h2>Reduce fuel costs • Reduce CO₂ • Plant for the future</h2>
-
         <p>This project compares diesel generator emissions with solar photovoltaic systems and recommends urban-tree mitigation strategies for Karachi.</p>
-
         <div class="hero-actions">
-
           <a class="btn primary" href="calculator.html">Open Carbon Calculator</a>
-
           <a class="btn ghost" href="trees.html">Explore Tree Mitigation</a>
-
         </div>
-
       </div>
-
     </section>
 
-<section class="container intro">
-  <div class="leaf-scene"> 
+    <section class="container intro">
+      <div class="leaf-scene"> 
+        <h3>Project Overview</h3>
+        <p>This website presents a step-by-step calculator to estimate diesel fuel consumption, CO₂ emissions and savings from solar. It also includes local literature-based recommendations for tree species to mitigate remaining emissions in Karachi.</p>
+        <ul class="features">
+          <li><strong>Calculator:</strong> 3-step interactive tool.</li>
+          <li><strong>Carbon Theory:</strong> Simple equations and sources.</li>
+          <li><strong>Trees:</strong> Species and sequestration tables drawn from local studies.</li>
+        </ul>
+        <img src="leaves.png" class="leaf L1" alt="leaf">
+        <img src="leaves.png" class="leaf L2" alt="leaf">
+        <img src="leaves.png" class="leaf L3" alt="leaf">
+        <img src="leaves.png" class="leaf L4" alt="leaf">
+      </div>
+    </section>
 
-    <h3>Project Overview</h3>
-    <p>This website presents a step-by-step calculator to estimate diesel fuel consumption, CO₂ emissions and savings from solar. It also includes local literature-based recommendations for tree species to mitigate remaining emissions in Karachi.</p>
-
-    <ul class="features">
-      <li><strong>Calculator:</strong> 3-step interactive tool.</li>
-      <li><strong>Carbon Theory:</strong> Simple equations and sources.</li>
-      <li><strong>Trees:</strong> Species and sequestration tables drawn from local studies.</li>
-    </ul>
-
-    <img src="leaves.png" class="leaf L1" alt="leaf">
-    <img src="leaves.png" class="leaf L2" alt="leaf">
-    <img src="leaves.png" class="leaf L3" alt="leaf">
-    <img src="leaves.png" class="leaf L4" alt="leaf">
-
-  </div>
-</section>
-
-<main>
     <section class="rationale-section diesel-bg">
         <div class="container">
             <div class="glass-card">
@@ -115,57 +96,44 @@
             </div>
         </div>
     </section>
-</main>
-    <section class="container" style="margin-top: 50px; margin-bottom: 50px;">
-  <div style="background: #ffffff; padding: 30px; border-radius: 12px; border: 1px solid #2ecc71; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-    
-    <h3 style="text-align: center; color: #004d40; margin-bottom: 20px;">Project Feedback & Discussion</h3>
+  </main>
 
-    <div id="cusdis_thread"
-      data-host="https://cusdis.com"
-      data-app-id="43f7867a-ea84-4649-86cd-a51810398e24"
-      data-page-id="home_page_001" 
-      data-page-url="https://vref.github.io/index.html"
-      data-page-title="Sustainable Energy Karachi"
-    ></div>
-    <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+  <button id="feedback-trigger" style="position: fixed; bottom: 20px; right: 20px; z-index: 2000; background: #2ecc71; color: white; border: none; padding: 15px 20px; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); font-weight: bold; display: flex; align-items: center; gap: 8px;">
+    <i class="fa-solid fa-comment-dots"></i> Leave Feedback
+  </button>
 
-  <section class="container" style="margin-top: 40px; margin-bottom: 40px;">
-  <h3 style="text-align: center; color: var(--accent-green);">Project Discussion & Feedback</h3>
-  <div data-canny style="min-height: 600px; width: 100%;"></div>
-  <div data-canny></div>
+  <div id="feedback-panel" style="position: fixed; top: 0; right: -450px; width: 400px; height: 100%; background: rgba(255, 255, 255, 0.98); z-index: 2001; box-shadow: -5px 0 25px rgba(0,0,0,0.2); transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); padding: 30px; overflow-y: auto;">
+      <button id="close-panel" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #666; position: absolute; top: 20px; left: 20px;">&times;</button>
+      <h3 style="margin-top: 40px; color: #004d40; text-align: center;">Project Discussion</h3>
+      <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+      <div id="cusdis_thread"
+        data-host="https://cusdis.com"
+        data-app-id="43f7867a-ea84-4649-86cd-a51810398e24"
+        data-page-id="home_page_001" 
+        data-page-url="https://vref.github.io/index.html"
+        data-page-title="Sustainable Energy Karachi">
+      </div>
   </div>
-</section>
 
-<script>
-  (function(i,s,o,g,r,a,m){i['Canny']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://canny.io/sdk.js','Canny');
+  <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
-  Canny('render', {
-    boardToken: '1e08454c-1056-dd68-221d-1eeb039bef31',
-    basePath: null, 
-    theme: 'dark' 
-  });
-</script>
- 
+  <script>
+    const trigger = document.getElementById('feedback-trigger');
+    const panel = document.getElementById('feedback-panel');
+    const closeBtn = document.getElementById('close-panel');
 
+    trigger.onclick = () => { panel.style.right = '0'; };
+    closeBtn.onclick = () => { panel.style.right = '-450px'; };
+    window.onclick = (event) => {
+      if (event.target == panel) { panel.style.right = '-450px'; }
+    };
+  </script>
   <footer class="site-footer">
-
     <div class="container">
-
       <p>Department of Civil Engineering • NED University • Project by Group (Azhan Ahmed & team)</p>
-
     </div>
-
   </footer>
 
-
-
   <script src="common.js"></script>
-
 </body>
-
 </html>
-  
