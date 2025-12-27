@@ -99,7 +99,6 @@
   </main>
 
   <section class="container" style="margin: 20px auto 40px auto; max-width: 800px;">
-    
     <div style="text-align: center; margin-bottom: 15px;">
         <h3 style="color: #004d40; font-family: sans-serif; font-size: 1.2rem; display: inline-flex; align-items: center; gap: 8px;">
             <span style="width: 8px; height: 8px; background: #2ecc71; border-radius: 50%; display: inline-block;"></span>
@@ -108,7 +107,6 @@
     </div>
 
     <div id="comment-wrapper" style="background: #ffffff; padding: 15px; border-radius: 12px; border: 1px solid #e0e0e0; overflow: hidden;">
-        
         <div id="cusdis_thread"
           data-host="https://cusdis.com"
           data-app-id="43f7867a-ea84-4649-86cd-a51810398e24"
@@ -116,12 +114,11 @@
           data-page-url="https://vref.github.io/index.html"
           data-page-title="Sustainable Energy Karachi">
         </div>
-
     </div>
   </section>
 
   <style>
-    /* Clean display: hides internal scrollbars for a flat, integrated look */
+    /* Hides internal scrollbars for a flat look */
     #comment-wrapper iframe {
         scrollbar-width: none !important;
         -ms-overflow-style: none !important;
@@ -134,28 +131,30 @@
   <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
   <script>
-    // Script to rename "Nickname" to "Name" and "Reply" to "Feedback"
     window.cusdis_on_runtime_ready = function() {
-      const targetNode = document.getElementById('cusdis_thread');
-      const observer = new MutationObserver(() => {
-        const iframe = targetNode.querySelector('iframe');
-        if (iframe && iframe.contentDocument) {
-          const doc = iframe.contentDocument;
-          
-          // 1. Rename Nickname Label
-          const nickLabel = Array.from(doc.querySelectorAll('label')).find(el => el.textContent.includes('Nickname'));
-          if (nickLabel) nickLabel.textContent = 'Name';
-          
-          // 2. Rename Reply Label
-          const replyLabel = Array.from(doc.querySelectorAll('label')).find(el => el.textContent.includes('Reply'));
-          if (replyLabel) replyLabel.textContent = 'Feedback';
+      // Create custom CSS to overwrite labels inside the iFrame
+      const style = document.createElement('style');
+      style.innerHTML = `
+        /* Overwrite 'Nickname' with 'Name' */
+        label[for="nickname"] { font-size: 0 !important; }
+        label[for="nickname"]::before { content: "Name"; font-size: 14px !important; visibility: visible; }
 
-          // 3. Rename Textarea Placeholder
-          const textarea = doc.querySelector('textarea');
-          if (textarea) textarea.placeholder = 'Write your feedback here...';
+        /* Overwrite 'Reply' with 'Feedback' */
+        label[for="content"] { font-size: 0 !important; }
+        label[for="content"]::before { content: "Feedback"; font-size: 14px !important; visibility: visible; }
+
+        /* Hide Scrollbar inside iFrame */
+        body { overflow: hidden !important; }
+      `;
+      
+      // Inject CSS once the iFrame is detected
+      const injectToIframe = setInterval(() => {
+        const iframe = document.querySelector('#cusdis_thread iframe');
+        if (iframe && iframe.contentDocument && iframe.contentDocument.head) {
+          iframe.contentDocument.head.appendChild(style);
+          clearInterval(injectToIframe);
         }
-      });
-      observer.observe(targetNode, { childList: true, subtree: true });
+      }, 200);
     };
   </script>
 
@@ -167,6 +166,7 @@
 
   <script src="common.js"></script>
 </body>
+</html>
 
 
 
