@@ -117,18 +117,20 @@
     </section>
 </main>
 
-    <section id="community-feedback" style="background-color: #1b4332; padding: 60px 20px; border-top: 3px solid #2d6a4f;">
-  <div class="container" style="max-width: 1100px; margin: 0 auto;">
-    
-    <div style="text-align: center; margin-bottom: 40px;">
-      <h2 style="color: #ffffff; font-size: 2.2rem; text-transform: uppercase; letter-spacing: 1px;">Reviews & Questions</h2>
-      <p style="color: #ffffff; opacity: 0.8; font-size: 1.1rem;">Your feedback helps improve urban green strategies for Karachi.</p>
-    </div>
+  <div data-canny></div>
 
-    <script src="https://elfsightcdn.com/platform.js" async></script>
-    <div class="elfsight-app-ee49fda8-4740-4181-8595-9f001401770a" data-elfsight-app-lazy></div>
-    </div>
-</section>
+<script>
+  (function(i,s,o,g,r,a,m){i['Canny']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://canny.io/sdk.js','Canny');
+
+  Canny('render', {
+    boardToken: '1e08454c-1056-dd68-221d-1eeb039bef31',
+    basePath: null, 
+    theme: 'dark' // This ensures it stays black/dark to match your site
+  });
+</script>
     
   <footer class="site-footer">
 
