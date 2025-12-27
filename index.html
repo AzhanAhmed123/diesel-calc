@@ -98,53 +98,37 @@
     </section>
   </main>
 
-  <section class="container" style="margin-bottom: 60px; margin-top: 40px;">
+  <section class="container" style="margin: 30px auto 60px auto; max-width: 900px;">
     
-    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding-left: 10px;">
-        <div style="width: 10px; height: 10px; background: #2ecc71; border-radius: 50%; box-shadow: 0 0 8px #2ecc71; animation: statusPulse 2s infinite;"></div>
-        <h3 style="margin: 0; color: #004d40; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; letter-spacing: 0.5px; text-transform: uppercase; font-size: 1.1rem;">Live Project Discussion & Ratings</h3>
+    <div style="text-align: center; margin-bottom: 20px;">
+        <h3 style="color: #004d40; font-family: sans-serif; display: inline-flex; align-items: center; gap: 10px;">
+            <span style="width: 8px; height: 8px; background: #2ecc71; border-radius: 50%; display: inline-block;"></span>
+            Project Discussion & Ratings
+        </h3>
     </div>
 
-    <div style="display: grid; grid-template-columns: 1fr 2.5fr; gap: 20px; align-items: stretch;">
+    <div class="feedback-container" style="background: #ffffff; padding: 20px; border-radius: 12px; border: 1px solid #e0e0e0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); overflow: hidden;">
         
-        <div style="background: #004d40; color: white; padding: 35px; border-radius: 15px; display: flex; flex-direction: column; justify-content: space-between; border-left: 5px solid #2ecc71;">
-            <div>
-                <h4 style="color: #2ecc71; margin-top: 0; font-size: 1.2rem;">Review Board</h4>
-                <p style="font-size: 0.95rem; line-height: 1.6; opacity: 0.85;">
-                    Your ratings help validate these carbon mitigation strategies for Karachi.
-                </p>
-            </div>
-            <div style="font-family: 'Courier New', monospace; font-size: 0.75rem; background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; border: 1px solid rgba(46, 204, 113, 0.3);">
-                [STATUS] : ACTIVE<br>
-                [AUTHOR] : ENGR. AZHAN AHMED<br>
-                
-            </div>
-        </div>
-
-        <div style="background: #ffffff; padding: 25px; border-radius: 15px; border: 1px solid #e0e0e0; box-shadow: 0 10px 30px rgba(0,0,0,0.05); min-height: 450px;">
-            <div id="cusdis_thread"
-              data-host="https://cusdis.com"
-              data-app-id="43f7867a-ea84-4649-86cd-a51810398e24"
-              data-page-id="home_page_001" 
-              data-page-url="https://vref.github.io/index.html"
-              data-page-title="Sustainable Energy Karachi">
-            </div>
+        <div id="cusdis_thread"
+          data-host="https://cusdis.com"
+          data-app-id="43f7867a-ea84-4649-86cd-a51810398e24"
+          data-page-id="home_page_001" 
+          data-page-url="https://vref.github.io/index.html"
+          data-page-title="Sustainable Energy Karachi">
         </div>
 
     </div>
   </section>
 
   <style>
-    @keyframes statusPulse {
-      0% { transform: scale(0.95); opacity: 0.8; }
-      50% { transform: scale(1.1); opacity: 1; }
-      100% { transform: scale(0.95); opacity: 0.8; }
+    /* Omit internal scrollbars for a cleaner look */
+    .feedback-container iframe, 
+    #cusdis_thread iframe {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
     }
-    /* Responsive Adjustment for Mobile Devices */
-    @media (max-width: 850px) {
-        section[style*="grid-template-columns"] > div { 
-            grid-template-columns: 1fr !important; 
-        }
+    .feedback-container iframe::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
     }
   </style>
 
@@ -158,3 +142,4 @@
 
   <script src="common.js"></script>
 </body>
+
