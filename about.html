@@ -7,24 +7,30 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
   <style>
-    /* Dark Theme Setup */
+    /* Background Setup with your Group Photo */
     body { 
-      background: #0b0f0d; /* Deep Blackish Green */
-      color: #ffffff; 
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(rgba(11, 15, 13, 0.85), rgba(11, 15, 13, 0.85)), 
+                  url('team-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    .about-content { padding: 60px 0; }
+    .about-content { padding: 40px 0; }
 
-    /* THE BIG GLASS BOX - Dark Mode */
+    /* THE BIG GLASS BOX - Dark & Translucent */
     .big-glass-box {
-      background: rgba(255, 255, 255, 0.03); 
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.05); 
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 40px;
-      padding: 60px 30px;
-      margin: 40px 0;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+      padding: 50px 20px;
+      margin: 30px auto;
+      max-width: 1100px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
     }
 
     /* FORCED HORIZONTAL ROW */
@@ -32,15 +38,14 @@
       display: flex;
       flex-direction: row;
       justify-content: space-around;
-      align-items: stretch;
-      gap: 15px;
-      flex-wrap: nowrap; /* Prevents wrapping on desktop */
+      align-items: flex-start;
+      gap: 10px;
+      flex-wrap: nowrap;
     }
 
     .member-card {
       flex: 1;
       text-align: center;
-      padding: 10px;
       transition: transform 0.3s ease;
     }
 
@@ -50,9 +55,9 @@
 
     .member-image-wrapper {
       position: relative;
-      width: 130px;
-      height: 130px;
-      margin: 0 auto 20px;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 15px;
     }
 
     .member-img {
@@ -60,7 +65,7 @@
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid rgba(255, 255, 255, 0.2);
+      border: 3px solid rgba(255, 255, 255, 0.3);
       position: relative;
       z-index: 2;
     }
@@ -72,22 +77,22 @@
       transform: translateX(-50%);
       background: #2ecc71;
       color: #000;
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
-      line-height: 28px;
+      line-height: 26px;
       font-weight: bold;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       z-index: 3;
     }
 
     /* Decorative Arcs */
     .arc {
       position: absolute;
-      width: 146px;
-      height: 146px;
-      top: -8px;
-      left: -8px;
+      width: 134px;
+      height: 134px;
+      top: -7px;
+      left: -7px;
       border-radius: 50%;
       border: 3px solid transparent;
       z-index: 1;
@@ -99,36 +104,29 @@
     .arc-4 { border-bottom-color: #9b59b6; border-left-color: #9b59b6; }
 
     .member-card h4 {
-      margin: 15px 0 5px;
+      margin: 10px 0 5px;
       color: #ffffff;
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
 
     .role {
       color: #2ecc71;
       font-weight: 700;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 1px;
       display: block;
-      margin-bottom: 10px;
     }
 
-    .bio {
-      font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.6);
-      line-height: 1.5;
-    }
-
-    /* Responsive: only stack on very small mobile screens */
-    @media (max-width: 768px) {
+    /* Responsive for Tablets/Phones */
+    @media (max-width: 850px) {
       .team-row { flex-wrap: wrap; }
-      .member-card { flex: 1 1 45%; margin-bottom: 20px; }
+      .member-card { flex: 1 1 45%; margin-bottom: 25px; }
     }
   </style>
 </head>
 
-<body class="theme-green">
+<body>
   <header class="site-header">
     <div class="container">
       <div class="brand-title">
@@ -162,12 +160,15 @@
 
   <main class="container about-content">
     <section>
-      <h2 style="color: #2ecc71;">About this Project</h2>
-      <p style="opacity: 0.8;">Developed by students of the Department of Civil Engineering, NED University. This tool is for educational purposes and to support small-scale planning for renewable adoption and urban forestry in Karachi.</p>
+      <h2 style="color: #2ecc71; text-align: center;">About this Project</h2>
+      <p style="text-align: center; max-width: 800px; margin: 0 auto; opacity: 0.9;">
+        Developed by students of the Department of Civil Engineering, NED University. 
+        This tool supports small-scale planning for renewable adoption and urban forestry in Karachi.
+      </p>
     </section>
 
     <section class="big-glass-box">
-      <h3 style="margin-bottom: 40px; text-align: center; color: #fff;">Group Members</h3>
+      <h3 style="margin-bottom: 40px; text-align: center; letter-spacing: 2px;">GROUP MEMBERS</h3>
       
       <div class="team-row">
         <div class="member-card">
@@ -178,7 +179,6 @@
           </div>
           <h4>Azhan Ahmed</h4>
           <span class="role">Project Lead</span>
-          <p class="bio">Lead engineer, specialized in carbon footprint and solar analysis.</p>
         </div>
 
         <div class="member-card">
@@ -188,8 +188,7 @@
             <div class="arc arc-2"></div>
           </div>
           <h4>Muhammad Hamza</h4>
-          <span class="role">Technical Researcher</span>
-          <p class="bio">Focused on diesel generator emission factors and efficiency metrics.</p>
+          <span class="role">Researcher</span>
         </div>
 
         <div class="member-card">
@@ -200,7 +199,6 @@
           </div>
           <h4>Varindher Kumar</h4>
           <span class="role">Env. Analyst</span>
-          <p class="bio">Developed urban tree sequestration models for Karachi botanical studies.</p>
         </div>
 
         <div class="member-card">
@@ -211,18 +209,17 @@
           </div>
           <h4>Khizer Waseem</h4>
           <span class="role">Data Scientist</span>
-          <p class="bio">Managed calculations and coordinated the literature review.</p>
         </div>
       </div>
     </section>
 
-    <section>
+    <section style="text-align: center; margin-top: 40px;">
       <h3 style="color: #2ecc71;">References</h3>
-      <p style="opacity: 0.7;">Key references: PSO fuel prices, IPCC emission factors, Bano et al. (Safari Park), Pakistan Journal of Botany (urban trees).</p>
+      <p style="opacity: 0.8; font-size: 0.9rem;">PSO fuel prices, IPCC emission factors, Bano et al. (Safari Park), Pakistan Journal of Botany.</p>
     </section>
   </main>
 
-  <footer class="site-footer" style="background: #000; border-top: 1px solid rgba(255,255,255,0.1);">
+  <footer class="site-footer" style="background: rgba(0,0,0,0.8); margin-top: 50px;">
     <div class="container">Prepared for EN–404 • NED University</div>
   </footer>
 
