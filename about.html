@@ -4,9 +4,114 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About - Sustainable Energy and Urban Green Mitigation</title>
-  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Clean background for the page */
+    body { background: #f8faf9; }
+
+    /* Glassmorphism Section Styling */
+    .about-content { padding: 40px 0; }
+    
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+      margin: 40px 0;
+    }
+
+    /* Green Glass Card */
+    .team-card {
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(46, 204, 113, 0.25);
+      border-radius: 24px;
+      padding: 35px 20px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 10px 30px rgba(0, 77, 64, 0.04);
+    }
+
+    .team-card:hover {
+      transform: translateY(-12px);
+      background: rgba(255, 255, 255, 0.75);
+      border-color: rgba(46, 204, 113, 0.5);
+      box-shadow: 0 15px 35px rgba(46, 204, 113, 0.1);
+    }
+
+    .member-image-wrapper {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 20px;
+    }
+
+    .member-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #ffffff;
+      position: relative;
+      z-index: 2;
+    }
+
+    .member-number {
+      position: absolute;
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #2ecc71;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      line-height: 30px;
+      font-weight: bold;
+      font-size: 0.8rem;
+      z-index: 3;
+    }
+
+    /* Decorative Arcs */
+    .arc {
+      position: absolute;
+      width: 156px;
+      height: 156px;
+      top: -8px;
+      left: -8px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      z-index: 1;
+    }
+    
+    .arc-1 { border-bottom-color: #2ecc71; border-left-color: #2ecc71; }
+    .arc-2 { border-bottom-color: #3498db; border-left-color: #3498db; }
+    .arc-3 { border-bottom-color: #e67e22; border-left-color: #e67e22; }
+    .arc-4 { border-bottom-color: #9b59b6; border-left-color: #9b59b6; }
+
+    .team-card h4 {
+      margin: 10px 0 5px;
+      color: #004d40;
+      font-size: 1.25rem;
+    }
+
+    .role {
+      color: #27ae60;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .bio {
+      font-size: 0.85rem;
+      color: #5f6368;
+      line-height: 1.6;
+    }
+  </style>
 </head>
 
 <body class="theme-green">
@@ -16,51 +121,88 @@
         <h1>Sustainable Energy & Urban Green Mitigation</h1>
         <p>Developed by Engr. Azhan Ahmed</p>
       </div>
-
       <nav class="cool-nav">
         <a href="index.html" class="nav-item">
           <i class="fa-solid fa-house"></i>
           <span>Home</span>
         </a>
-
         <a href="calculator.html" class="nav-item">
           <i class="fa-solid fa-calculator"></i>
           <span>Calculator</span>
         </a>
-
         <a href="theory.html" class="nav-item">
           <i class="fa-solid fa-book"></i>
           <span>Theory</span>
         </a>
-
         <a href="trees.html" class="nav-item">
           <i class="fa-solid fa-tree"></i>
           <span>Trees</span>
         </a>
-
         <a href="about.html" class="nav-item active">
-          <div class="active-circle">
-            <i class="fa-solid fa-user"></i>
-          </div>
+          <div class="active-circle"><i class="fa-solid fa-user"></i></div>
           <span>About</span>
         </a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="container">
+  <main class="container about-content">
+    <section>
       <h2>About this Project</h2>
       <p>Developed by students of the Department of Civil Engineering, NED University. This tool is for educational purposes and to support small-scale planning for renewable adoption and urban forestry in Karachi.</p>
+    </section>
 
-      <h3>Group Members</h3>
-      <ul>
-        <li>Azhan Ahmed</li>
-        <li>Muhammad Hamza</li>
-        <li>Varindher Kumar</li>
-        <li>Khizer Waseem</li>
-      </ul>
+    <section>
+      <h3 style="margin-top: 40px; text-align: center;">Group Members</h3>
+      <div class="team-grid">
+        
+        <div class="team-card">
+          <div class="member-image-wrapper">
+            <div class="member-number">01</div>
+            <img src="azhan.jpg" alt="Azhan Ahmed" class="member-img">
+            <div class="arc arc-1"></div>
+          </div>
+          <h4>Azhan Ahmed</h4>
+          <span class="role">Project Lead</span>
+          <p class="bio">Lead engineer for the sustainable energy project, specialized in carbon footprint and solar analysis.</p>
+        </div>
 
+        <div class="team-card">
+          <div class="member-image-wrapper">
+            <div class="member-number">02</div>
+            <img src="hamza.jpg" alt="Muhammad Hamza" class="member-img">
+            <div class="arc arc-2"></div>
+          </div>
+          <h4>Muhammad Hamza</h4>
+          <span class="role">Technical Researcher</span>
+          <p class="bio">Focused on data collection for diesel generator emission factors and efficiency metrics.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="member-image-wrapper">
+            <div class="member-number">03</div>
+            <img src="kumar.jpg" alt="Varindher Kumar" class="member-img">
+            <div class="arc arc-3"></div>
+          </div>
+          <h4>Varindher Kumar</h4>
+          <span class="role">Environmental Analyst</span>
+          <p class="bio">Developed the urban tree sequestration models based on Karachi-specific botanical studies.</p>
+        </div>
+
+        <div class="team-card">
+          <div class="member-image-wrapper">
+            <div class="member-number">04</div>
+            <img src="khizer.jpg" alt="Khizer Waseem" class="member-img">
+            <div class="arc arc-4"></div>
+          </div>
+          <h4>Khizer Waseem</h4>
+          <span class="role">Data Scientist</span>
+          <p class="bio">Managed the project calculations and coordinated literature review from Pakistan Journal of Botany.</p>
+        </div>
+
+      </div>
+    </section>
+    <section>
       <h3>References</h3>
       <p>Key references: PSO fuel prices, IPCC emission factors, Bano et al. (Safari Park), Pakistan Journal of Botany (urban trees).</p>
     </section>
