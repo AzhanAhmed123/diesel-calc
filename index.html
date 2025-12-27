@@ -121,7 +121,7 @@
   </section>
 
   <style>
-    /* Hide scrollbars globally for the widget area */
+    /* Clean display: hides internal scrollbars for a flat, integrated look */
     #comment-wrapper iframe {
         scrollbar-width: none !important;
         -ms-overflow-style: none !important;
@@ -134,7 +134,7 @@
   <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
   <script>
-    // Unique Script to rename "Nickname" to "Name" and "Reply" to "Feedback"
+    // Script to rename "Nickname" to "Name" and "Reply" to "Feedback"
     window.cusdis_on_runtime_ready = function() {
       const targetNode = document.getElementById('cusdis_thread');
       const observer = new MutationObserver(() => {
@@ -142,16 +142,17 @@
         if (iframe && iframe.contentDocument) {
           const doc = iframe.contentDocument;
           
-          // Change "Nickname" to "Name"
+          // 1. Rename Nickname Label
           const nickLabel = Array.from(doc.querySelectorAll('label')).find(el => el.textContent.includes('Nickname'));
           if (nickLabel) nickLabel.textContent = 'Name';
           
-          // Change "Reply" placeholder to "Share your feedback..."
+          // 2. Rename Reply Label
           const replyLabel = Array.from(doc.querySelectorAll('label')).find(el => el.textContent.includes('Reply'));
           if (replyLabel) replyLabel.textContent = 'Feedback';
 
+          // 3. Rename Textarea Placeholder
           const textarea = doc.querySelector('textarea');
-          if (textarea) textarea.placeholder = 'Share your feedback here...';
+          if (textarea) textarea.placeholder = 'Write your feedback here...';
         }
       });
       observer.observe(targetNode, { childList: true, subtree: true });
