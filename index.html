@@ -98,36 +98,55 @@
     </section>
   </main>
 
-  <button id="feedback-trigger" style="position: fixed; bottom: 20px; right: 20px; z-index: 2000; background: #2ecc71; color: white; border: none; padding: 15px 20px; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); font-weight: bold; display: flex; align-items: center; gap: 8px;">
-    <i class="fa-solid fa-comment-dots"></i> Leave Feedback
-  </button>
+  <section class="container feedback-bento" style="margin-bottom: 80px; margin-top: 40px;">
+    
+    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px;">
+        <div style="width: 12px; height: 12px; background: #2ecc71; border-radius: 50%; box-shadow: 0 0 10px #2ecc71; animation: pulse 2s infinite;"></div>
+        <h3 style="margin: 0; color: #004d40; font-family: 'Courier New', monospace; letter-spacing: 1px; text-transform: uppercase;">Live Project Discussion & Ratings</h3>
+    </div>
 
-  <div id="feedback-panel" style="position: fixed; top: 0; right: -450px; width: 400px; height: 100%; background: rgba(255, 255, 255, 0.98); z-index: 2001; box-shadow: -5px 0 25px rgba(0,0,0,0.2); transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); padding: 30px; overflow-y: auto;">
-      <button id="close-panel" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #666; position: absolute; top: 20px; left: 20px;">&times;</button>
-      <h3 style="margin-top: 40px; color: #004d40; text-align: center;">Project Discussion</h3>
-      <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
-      <div id="cusdis_thread"
-        data-host="https://cusdis.com"
-        data-app-id="43f7867a-ea84-4649-86cd-a51810398e24"
-        data-page-id="home_page_001" 
-        data-page-url="https://vref.github.io/index.html"
-        data-page-title="Sustainable Energy Karachi">
-      </div>
-  </div>
+    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px; min-height: 400px;">
+        
+        <div style="background: #004d40; color: white; padding: 30px; border-radius: 20px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid #2ecc71;">
+            <div>
+                <h4 style="color: #2ecc71; margin-top: 0;">Community Input</h4>
+                <p style="font-size: 0.9rem; line-height: 1.6; opacity: 0.9;">
+                    Your ratings help validate the carbon mitigation strategies proposed for Karachi. All feedback is stored permanently in our project archives.
+                </p>
+            </div>
+            <div style="font-family: monospace; font-size: 0.8rem; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 10px;">
+                STATUS: ACCEPTING_REVIEWS<br>
+                ENGR: AZHAN AHMED<br>
+                LOCATION: NED UNIVERSITY
+            </div>
+        </div>
+
+        <div style="background: #ffffff; padding: 30px; border-radius: 20px; border: 1px solid #e0e0e0; box-shadow: 10px 10px 0px #f0fdf4;">
+            <div id="cusdis_thread"
+              data-host="https://cusdis.com"
+              data-app-id="43f7867a-ea84-4649-86cd-a51810398e24"
+              data-page-id="home_page_001" 
+              data-page-url="https://vref.github.io/index.html"
+              data-page-title="Sustainable Energy Karachi">
+            </div>
+        </div>
+
+    </div>
+  </section>
+
+  <style>
+    @keyframes pulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(46, 204, 113, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+    }
+    /* Simple fix for mobile responsiveness */
+    @media (max-width: 768px) {
+        .feedback-bento div { grid-template-columns: 1fr !important; }
+    }
+  </style>
 
   <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
-
-  <script>
-    const trigger = document.getElementById('feedback-trigger');
-    const panel = document.getElementById('feedback-panel');
-    const closeBtn = document.getElementById('close-panel');
-
-    trigger.onclick = () => { panel.style.right = '0'; };
-    closeBtn.onclick = () => { panel.style.right = '-450px'; };
-    window.onclick = (event) => {
-      if (event.target == panel) { panel.style.right = '-450px'; }
-    };
-  </script>
   <footer class="site-footer">
     <div class="container">
       <p>Department of Civil Engineering • NED University • Project by Group (Azhan Ahmed & team)</p>
@@ -136,4 +155,3 @@
 
   <script src="common.js"></script>
 </body>
-</html>
