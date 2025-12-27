@@ -98,16 +98,16 @@
     </section>
   </main>
 
-  <section class="container" style="margin: 30px auto 60px auto; max-width: 900px;">
+  <section class="container" style="margin: 20px auto 40px auto; max-width: 800px;">
     
-    <div style="text-align: center; margin-bottom: 20px;">
-        <h3 style="color: #004d40; font-family: sans-serif; display: inline-flex; align-items: center; gap: 10px;">
+    <div style="text-align: center; margin-bottom: 15px;">
+        <h3 style="color: #004d40; font-family: sans-serif; font-size: 1.2rem; display: inline-flex; align-items: center; gap: 8px;">
             <span style="width: 8px; height: 8px; background: #2ecc71; border-radius: 50%; display: inline-block;"></span>
-            Project Discussion & Ratings
+            Project Feedback & Ratings
         </h3>
     </div>
 
-    <div class="feedback-container" style="background: #ffffff; padding: 20px; border-radius: 12px; border: 1px solid #e0e0e0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); overflow: hidden;">
+    <div id="comment-wrapper" style="background: #ffffff; padding: 15px; border-radius: 12px; border: 1px solid #e0e0e0; overflow: hidden;">
         
         <div id="cusdis_thread"
           data-host="https://cusdis.com"
@@ -121,18 +121,42 @@
   </section>
 
   <style>
-    /* Omit internal scrollbars for a cleaner look */
-    .feedback-container iframe, 
-    #cusdis_thread iframe {
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none; /* IE/Edge */
+    /* Hide scrollbars globally for the widget area */
+    #comment-wrapper iframe {
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
     }
-    .feedback-container iframe::-webkit-scrollbar {
-        display: none; /* Chrome/Safari */
+    #comment-wrapper iframe::-webkit-scrollbar {
+        display: none !important;
     }
   </style>
 
   <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+  <script>
+    // Unique Script to rename "Nickname" to "Name" and "Reply" to "Feedback"
+    window.cusdis_on_runtime_ready = function() {
+      const targetNode = document.getElementById('cusdis_thread');
+      const observer = new MutationObserver(() => {
+        const iframe = targetNode.querySelector('iframe');
+        if (iframe && iframe.contentDocument) {
+          const doc = iframe.contentDocument;
+          
+          // Change "Nickname" to "Name"
+          const nickLabel = Array.from(doc.querySelectorAll('label')).find(el => el.textContent.includes('Nickname'));
+          if (nickLabel) nickLabel.textContent = 'Name';
+          
+          // Change "Reply" placeholder to "Share your feedback..."
+          const replyLabel = Array.from(doc.querySelectorAll('label')).find(el => el.textContent.includes('Reply'));
+          if (replyLabel) replyLabel.textContent = 'Feedback';
+
+          const textarea = doc.querySelector('textarea');
+          if (textarea) textarea.placeholder = 'Share your feedback here...';
+        }
+      });
+      observer.observe(targetNode, { childList: true, subtree: true });
+    };
+  </script>
 
   <footer class="site-footer">
     <div class="container">
@@ -142,4 +166,6 @@
 
   <script src="common.js"></script>
 </body>
+
+
 
