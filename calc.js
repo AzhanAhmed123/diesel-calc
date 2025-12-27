@@ -31,6 +31,15 @@ function calculate(){
   const payback = annualSavings>0? (install/annualSavings):0;
 
   // ... (keep all your math variables like annualCO2saved)
+ 
+  // 1. Calculate Total Annual CO2 produced by the generator
+  const totalAnnualCO2 = co2Day * 365;
+
+  // 2. Calculate the Remaining Carbon (The Debt)
+  const remainingCO2 = Math.max(0, totalAnnualCO2 - annualCO2saved);
+
+  // 3. Calculate Trees needed for the REMAINING balance (using 22kg/tree)
+  const trees = Math.ceil(remainingCO2 / 22);
   // ANIMATING ALL RESULTS (Keep these lines)
   animateValue("fuelDay", 0, fuelDay, 1000);
   animateValue("co2Day", 0, co2Day, 1000);
@@ -83,6 +92,7 @@ function animateValue(id, start, end, duration) {
     }
     requestAnimationFrame(run);
 }
+
 
 
 
