@@ -983,3 +983,26 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
         display: block !important;
     }
 }
+
+
+
+
+/* Contact Icon Styling */
+    .member-contacts {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .member-contacts a {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .member-contacts a:hover {
+      color: #2ecc71;
+      transform: translateY(-2px);
+    }
