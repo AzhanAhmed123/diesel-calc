@@ -789,3 +789,109 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
         max-width: 250px;
     }
 }
+
+
+
+/* Insights Page Styling */
+.insights-page {
+    background-color: #020d06;
+    background-image: radial-gradient(circle at top right, #0a2e1a, #020d06);
+    color: #e0e0e0;
+    line-height: 1.7;
+}
+
+.insights-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.insights-hero {
+    text-align: center;
+    padding: 60px 0;
+}
+
+.insights-hero h1 {
+    font-size: 3.5rem;
+    color: #2ecc71;
+    text-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
+    margin-bottom: 10px;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+@media (max-width: 600px) {
+    .content-grid { grid-template-columns: 1fr; }
+    .insights-hero h1 { font-size: 2.2rem; }
+}
+
+.info-block, .story-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.info-block:hover, .story-card:hover {
+    border-color: #2ecc71;
+    transform: translateY(-5px);
+}
+
+.info-block h2, .info-block h3, .story-card h3, .wide-section h2, .global-perspective h2, .facts-section h2 {
+    color: #2ecc71;
+    margin-bottom: 15px;
+}
+
+.wide-section, .global-perspective, .facts-section {
+    margin: 60px 0;
+}
+
+.story-card {
+    margin-bottom: 25px;
+}
+
+.story-card.featured {
+    border: 1px solid rgba(46, 204, 113, 0.4);
+    background: rgba(46, 204, 113, 0.05);
+}
+
+.neon-divider {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #2ecc71, transparent);
+    margin: 50px 0;
+}
+
+/* Fact Grid */
+.fact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.fact-card {
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    border: 1px solid rgba(46, 204, 113, 0.2);
+}
+
+.fact-card i {
+    font-size: 2.5rem;
+    color: #2ecc71;
+    margin-bottom: 15px;
+}
+
+.fact-card h4 {
+    color: #fff;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
