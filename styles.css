@@ -746,3 +746,46 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     letter-spacing: 1px;
     color: #000; /* Dark text on bright green looks very clean */
 }
+.spectacular-btn {
+    text-decoration: none;
+    font-weight: 700;
+    /* 1. Reduced font size slightly */
+    font-size: 0.9rem; 
+    
+    /* 2. Reduced padding (Top/Bottom 12px, Left/Right 25px) */
+    padding: 12px 25px; 
+    
+    border-radius: 50px;
+    color: #ffffff;
+    background: rgba(46, 204, 113, 0.2); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid rgba(46, 204, 113, 0.5);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    
+    /* 3. Reduced minimum width to make it feel smaller */
+    min-width: 180px; 
+}
+
+.spectacular-btn:hover {
+    /* 4. Reduced the "lift" from -8px to -5px so it fits the smaller size */
+    transform: translateY(-5px) scale(1.03); 
+    background: rgba(46, 204, 113, 0.8);
+    border-color: #2ecc71;
+    box-shadow: 0 10px 20px rgba(46, 204, 113, 0.4), 
+                0 0 12px rgba(46, 204, 113, 0.6);
+    color: #000;
+}
+@media (max-width: 600px) {
+    .button-container {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+        align-items: center;
+    }
+    .spectacular-btn {
+        width: 100%; /* Make buttons full width on mobile */
+        max-width: 250px;
+    }
+}
