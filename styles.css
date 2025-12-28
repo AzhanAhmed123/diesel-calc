@@ -849,3 +849,57 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     color: #2ecc71;
     margin-bottom: 15px;
 }
+
+
+/* Fix for Mobile Viewports */
+@media (max-width: 768px) {
+    /* 1. Stack the Header Branding */
+    .header-layout {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .brand-title h1 {
+        font-size: 1.4rem; /* Smaller text for mobile */
+    }
+
+    /* 2. Fix Overlapping Navigation Pill */
+    .cool-nav {
+        width: 100%;
+        justify-content: space-around;
+        padding: 10px 5px;
+        border-radius: 15px; /* Less rounded for better width use */
+        flex-wrap: wrap; /* Allows items to wrap if screen is very narrow */
+    }
+
+    .nav-item span {
+        font-size: 0.7rem; /* Smaller text for nav */
+    }
+
+    .active-circle {
+        width: 35px;
+        height: 35px;
+        top: -10px; /* Adjusting the float height for mobile */
+    }
+
+    /* 3. Stack Notebook Pages Vertically */
+    .notebook-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        gap: 20px;
+    }
+
+    /* Remove the diagonal rotations on mobile to prevent horizontal overflow */
+    .diag-left, .diag-right {
+        transform: rotate(0deg) !important;
+    }
+
+    /* Remove the margin offsets so they don't create big gaps */
+    .push-1, .push-2 {
+        margin-top: 0 !important;
+    }
+
+    .insights-intro h2 {
+        font-size: 1.8rem;
+    }
+}
