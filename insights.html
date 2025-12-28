@@ -3,188 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insights | Spiral Notebook Edition</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body class="notebook-page">
+    <title>Theory & Insights | Technical Folio</title>
+    <style>
+        :root {
+            --primary-green: #1e8449;
+            --paper-white: #ffffff;
+            --bg-workspace: #f8faf9;
+            --grid-line: #e2e8f0;
+        }
 
-    <header class="site-header">
-        <div class="header-layout">
-            <img src="logo.png" class="header-logo" alt="Logo">
-            <nav class="cool-nav">
-                <a href="index.html">Home</a>
-                <a href="calculator.html">Calculator</a>
-                <a href="theory.html">Theory</a>
-                <a href="insights.html" class="active">Insights</a>
-                <a href="trees.html">Trees</a>
-                <a href="about.html">About</a>
-            </nav>
-        </div>
-    </header>
+        body {
+            background-color: var(--bg-workspace);
+            /* Engineering blueprint grid */
+            background-image: linear-gradient(var(--grid-line) 1px, transparent 1px),
+                              linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 40px 40px;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            margin: 0;
+            color: #2d3436;
+        }
 
-    <main class="notebook-container">
+        .wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .section-title {
+            margin-bottom: 80px;
+            text-align: left;
+            border-bottom: 2px solid var(--primary-green);
+            display: inline-block;
+            padding-right: 50px;
+        }
+
+        .section-title h1 {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        /* 3-Column Diagonal Scattering */
+        .folio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+            align-items: start;
+        }
+
+        /* The Notebook Shape */
+        .folio-card {
+            background: var(--paper-white);
+            display: flex;
+            min-height: 240px;
+            box-shadow: 12px 12px 2px rgba(0, 0, 0, 0.02); /* Flat architectural shadow */
+            border: 1px solid #dcdde1;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Minimalist Professional Spiral */
+        .spiral-spine {
+            width: 35px;
+            background: #f1f2f6;
+            border-right: 1px solid #dcdde1;
+            position: relative;
+            background-image: radial-gradient(#2f3640 3px, transparent 4px);
+            background-size: 100% 22px;
+            background-position: center;
+        }
+
+        .spiral-spine::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 10px;
+            width: 20px;
+            height: 100%;
+            /* Sophisticated dark metallic spiral */
+            background-image: linear-gradient(transparent 6px, #7f8c8d 8px, #2c3e50 11px, #7f8c8d 14px, transparent 16px);
+            background-size: 100% 22px;
+        }
+
+        .content { padding: 25px; flex: 1; }
+
+        .folio-id {
+            font-size: 0.65rem;
+            font-weight: 900;
+            color: #95a5a6;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .content h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.2rem;
+            color: var(--primary-green);
+            line-height: 1.2;
+        }
+
+        .content p {
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: #4b4b4b;
+        }
+
+        /* Staggered Diagonal Positioning */
+        .diag-1 { transform: rotate(-1.5deg); margin-top: 0; }
+        .diag-2 { transform: rotate(2deg); margin-top: 60px; }
+        .diag-3 { transform: rotate(-1deg); margin-top: 120px; }
         
-        <section class="notebook-hero">
-            <h1>Field Notes & Environmental Insights</h1>
-            <p>A detailed log of Karachi's carbon footprint and mitigation strategies.</p>
-        </section>
+        .diag-4 { transform: rotate(1.2deg); margin-top: -20px; }
+        .diag-5 { transform: rotate(-2.5deg); margin-top: 40px; }
+        .diag-6 { transform: rotate(0.8deg); margin-top: 100px; }
 
-        <div class="spiral-grid">
-            
-            <div class="note-card rotate-L">
-                <div class="spiral-wire"></div>
-                <div class="note-content">
-                    <span class="date-stamp">LOG #01</span>
-                    <h3>Diesel Power in Urban Karachi</h3>
-                    <p>Diesel generators are a primary source of localized air pollution in Karachi. Beyond $CO_2$, these engines release high concentrations of Nitrogen Oxides ($NO_x$), Carbon Monoxide ($CO$), and Particulate Matter ($PM_{2.5}$). These pollutants contribute significantly to the city's seasonal smog and respiratory health issues. By calculating the carbon footprint of your generator, you are identifying the specific volume of greenhouse gases that must be neutralized.</p>
+        .folio-card:hover {
+            transform: rotate(0deg) translateY(-15px) scale(1.02);
+            box-shadow: 20px 20px 0px rgba(39, 174, 96, 0.05);
+            z-index: 10;
+            border-color: var(--primary-green);
+        }
+
+        @media (max-width: 1000px) {
+            .folio-grid { grid-template-columns: 1fr 1fr; }
+            .diag-3, .diag-6 { margin-top: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="wrapper">
+        <header class="section-title">
+            <h1>Theoretical Insights</h1>
+        </header>
+
+        <div class="folio-grid">
+            <article class="folio-card diag-1">
+                <div class="spiral-spine"></div>
+                <div class="content">
+                    <span class="folio-id">Folio No. 001</span>
+                    <h3>Diesel Combustion Mechanics</h3>
+                    <p>Analysis of decentralized diesel generators reveals a direct output of $CO_2$, $NO_x$, and $PM_{2.5}$, which significantly degrades localized air quality in Karachi.</p>
                 </div>
-            </div>
+            </article>
 
-            <div class="note-card rotate-R push-down">
-                <div class="spiral-wire"></div>
-                <div class="note-content">
-                    <span class="date-stamp">LOG #02</span>
-                    <h3>The Struggle: Load Shedding</h3>
-                    <p>If you live in Karachi, you know the sound of a diesel generator starting up the moment the lights go out. For many, load shedding is a daily reality that forces us to rely on expensive, noisy, and smoky generators just to keep the fans spinning. But while these "big machines" solve our immediate power problem, they create a silent one: they breathe out thick carbon smoke that stays in our streets.</p>
+            <article class="folio-card diag-2">
+                <div class="spiral-spine"></div>
+                <div class="content">
+                    <span class="folio-id">Folio No. 002</span>
+                    <h3>The Load Shedding Energy Gap</h3>
+                    <p>Grid instability forces a shift to carbon-intensive backup power. This systemic energy gap is the primary driver for decentralized emission growth in urban centers.</p>
                 </div>
-            </div>
+            </article>
 
-            <div class="note-card rotate-L">
-                <div class="spiral-wire"></div>
-                <div class="note-content">
-                    <span class="date-stamp">LOG #03</span>
-                    <h3>Photovoltaic Offset Methodology</h3>
-                    <p>Solar energy mitigation works through the "displacement" of fossil fuel combustion. In Karachi, we benefit from high solar irradiance, averaging roughly 5.5 peak sun hours daily. When a solar PV system provides power, it reduces the load demand on the diesel generator, leading to a direct, linear reduction in fuel consumption.</p>
+            <article class="folio-card diag-3">
+                <div class="spiral-spine"></div>
+                <div class="content">
+                    <span class="folio-id">Folio No. 003</span>
+                    <h3>Photovoltaic Displacement Logic</h3>
+                    <p>Solar energy integration functions by displacing the thermal load of generators. With Karachi's 5.5 peak sun hours, the carbon debt reduction is calculated linearly.</p>
                 </div>
-            </div>
+            </article>
 
-            <div class="note-card rotate-R push-down">
-                <div class="spiral-wire"></div>
-                <div class="note-content">
-                    <span class="date-stamp">LOG #04</span>
-                    <h3>The "Invisible" Cost of Diesel</h3>
-                    <p>Did you know that burning just one liter of diesel is like throwing nearly 2.7kg of invisible trash into the sky? On a global level, diesel generators produce about 100 million tonnes of $CO_2$ every year. Most people only see the "fuel price" at the pump, but the "environmental price" is paid in rising temperatures and more frequent heatwaves.</p>
+            <article class="folio-card diag-4">
+                <div class="spiral-spine"></div>
+                <div class="content">
+                    <span class="folio-id">Folio No. 004</span>
+                    <h3>Biological Carbon Sequestration</h3>
+                    <p>A mature tree acts as a biological carbon sink, absorbing approximately 22kg of $CO_2$ annually through the natural process of photosynthesis.</p>
                 </div>
-            </div>
+            </article>
 
-            <div class="full-width-journal">
-                <div class="journal-page">
-                    <div class="spiral-wire-top"></div>
-                    <h2>A Global Perspective: One Problem, Many Cities</h2>
-                    <p>While load shedding is a daily hurdle in Pakistan, nearly 770 million people worldwide live without reliable access to electricity. From the crowded streets of Lagos, Nigeria, to the outskirts of Mumbai, India, millions rely on diesel. Your local action helps slow down this global "fever" of 1.1°C temperature rise.</p>
+            <article class="folio-card diag-5">
+                <div class="spiral-spine"></div>
+                <div class="content">
+                    <span class="folio-id">Folio No. 005</span>
+                    <h3>Urban Heat Mitigation</h3>
+                    <p>Strategic urban forestry counteracts the "Urban Heat Island" effect, providing localized cooling through evapotranspiration and shaded surface areas.</p>
                 </div>
-            </div>
+            </article>
 
-            <div class="note-card rotate-L">
-                <div class="spiral-wire"></div>
-                <div class="note-content">
-                    <span class="date-stamp">LOG #05</span>
-                    <h3>Urban Trees: Nature’s Technology</h3>
-                    <p>While solar panels prevent new emissions, trees remove existing $CO_2$ from the air. Through photosynthesis, a mature tree absorbs an average of 22kg of $CO_2$ annually. In an urban heat island like Karachi, planting trees provides the dual benefit of carbon sequestration and natural cooling, helping to lower local temperatures.</p>
+            <article class="folio-card diag-6">
+                <div class="spiral-spine"></div>
+                <div class="content">
+                    <span class="folio-id">Folio No. 006</span>
+                    <h3>Net Zero Mathematical Roadmap</h3>
+                    <p>The path to carbon neutrality is a hybrid balance: aggressive source reduction via Solar PV combined with biological removal via Urban Forestry.</p>
                 </div>
-            </div>
-
-            <div class="note-card rotate-R push-down">
-                <div class="spiral-wire"></div>
-                <div class="note-content">
-<style>
-    .notebook-page {
-        background-color: #fcfcfc; /* Very light workspace grey */
-        background-image: 
-            linear-gradient(90deg, rgba(0,0,0,.03) 1px, transparent 1px),
-            linear-gradient(rgba(0,0,0,.03) 1px, transparent 1px);
-        background-size: 20px 20px;
-        margin: 0;
-        font-family: 'Segoe UI', sans-serif;
-    }
-
-    .notebook-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 40px;
-    }
-
-    /* Smaller, narrower grid for diagonal flow */
-    .spiral-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); /* 3 columns for better scattering */
-        gap: 30px;
-        align-items: start;
-    }
-
-    .note-card {
-        background: #ffffff;
-        display: flex;
-        flex-direction: row;
-        min-height: 200px; /* Reduced height */
-        box-shadow: 5px 5px 15px rgba(0,0,0,0.05);
-        border-radius: 4px;
-        border: 1px solid #efefef;
-        transition: all 0.3s ease;
-        max-width: 400px; /* Limits the size so they stay small */
-    }
-
-    /* Spiral remains thin and proportional */
-    .spiral-wire {
-        width: 30px;
-        background: #f8f8f8;
-        border-right: 1px solid #ddd;
-        background-image: radial-gradient(#777 3px, transparent 4px);
-        background-size: 100% 20px;
-        background-position: center;
-    }
-
-    .spiral-wire::before {
-        content: "";
-        position: absolute;
-        top: 0; left: 8px;
-        width: 20px;
-        height: 100%;
-        background-image: linear-gradient(transparent 5px, #bbb 7px, #444 10px, #bbb 13px, transparent 15px);
-        background-size: 100% 20px;
-    }
-
-    .note-content { 
-        padding: 20px; 
-        font-size: 0.9rem; /* Smaller font for smaller cards */
-    }
-
-    .note-content h3 { 
-        font-size: 1.1rem; 
-        color: #1a5e38; 
-        margin-bottom: 8px;
-    }
-
-    /* Diagonal Staggering Logic */
-    .item-1 { transform: rotate(-2deg); grid-column: 1; }
-    .item-2 { transform: rotate(3deg); grid-column: 2; margin-top: 50px; }
-    .item-3 { transform: rotate(-1deg); grid-column: 3; margin-top: 100px; }
-    
-    .item-4 { transform: rotate(2deg); grid-column: 1; margin-top: -20px; }
-    .item-5 { transform: rotate(-3deg); grid-column: 2; margin-top: 30px; }
-    .item-6 { transform: rotate(1deg); grid-column: 3; margin-top: 80px; }
-
-    .note-card:hover {
-        transform: rotate(0deg) translateY(-5px);
-        box-shadow: 0 10px 25px rgba(46, 204, 113, 0.15);
-        z-index: 100;
-    }
-
-    @media (max-width: 1100px) {
-        .spiral-grid { grid-template-columns: 1fr 1fr; }
-        .item-3, .item-6 { grid-column: auto; margin-top: 0; }
-    }
-</style>
-                    <span class="date-stamp">LOG #06</span>
-                    <h3>The Path to Net Zero</h3>
-                    <p>Achieving "Net Zero" means your greenhouse gases emitted are perfectly balanced by those removed. Solar energy is the first line of defense—reducing the "source" of the pollution. For the remaining energy, trees bridge the gap. This hybrid approach ensures a mathematically sound roadmap toward a sustainable lifestyle.</p>
-                </div>
-            </div>
-
+            </article>
         </div>
     </main>
 
-    
 </body>
 </html>
