@@ -7,10 +7,16 @@ function goToStep3(){
 }
 
 function setVisibility(id){
-  ['step1','step2','step3','final-impact'].forEach(x => {
+  ['step1','step2','step3'].forEach(x => { // Removed 'final-impact' from the loop
     const el = document.getElementById(x);
     if(el) el.style.display = (x === id ? 'block' : 'none');
   });
+  
+  // Only hide the impact section if we go back to Step 1 or 2
+  if(id === 'step1' || id === 'step2') {
+      const impact = document.getElementById('final-impact');
+      if(impact) impact.style.display = 'none';
+  }
 }
 
 function calculate() {
@@ -124,6 +130,62 @@ document.addEventListener("DOMContentLoaded", function() {
         litersInput.addEventListener('input', updateLiveEfficiency);
     }
 });
+
+
+
+// --- PDF Generation Logic ---
+function downloadPDF() {
+    const resultsContent = document.getElementById('step3'); 
+    const impactContent = document.getElementById('final-impact');
+    
+    // Get Current Date & Time
+    const now = new Date();
+    const dateTime = now.toLocaleString('en-US', { 
+        dateStyle: 'medium', 
+        timeStyle: 'short' 
+    });
+
+    // Create a temporary container for the PDF layout
+    const reportContainer = document.createElement('div');
+    reportContainer.style.padding = "30px";
+    reportContainer.style.fontFamily = "Arial, sans-serif";
+    
+    reportContainer.innerHTML = `
+        <div style="text-align: center; border-bottom: 2px solid #059669; padding-bottom: 15px; margin-bottom: 30px;">
+            <h1 style="color: #059669; margin: 0;">Sustainability Impact Report</h1>
+            <p style="margin: 5px 0; font-weight: bold;">NED University of Engineering & Technology</p>
+            <p style="font-size: 0.85rem; color: #666;">Generated on: ${dateTime}</p>
+        </div>
+        
+        <div style="margin-bottom: 40px;">
+            <h3 style="color: #1e40af; border-bottom: 1px solid #eee; padding-bottom: 5px;">1. Calculation Summary</h3>
+            ${resultsContent.innerHTML}
+        </div>
+
+        <div style="margin-bottom: 40px;">
+            <h3 style="color: #1e40af; border-bottom: 1px solid #eee; padding-bottom: 5px;">2. Environmental Mitigation</h3>
+            ${impactContent.innerHTML}
+        </div>
+
+        <footer style="margin-top: 60px; text-align: center; font-size: 0.75rem; color: #888; border-top: 1px solid #eee; padding-top: 15px;">
+            Developed by: Engr. Azhan Ahmed & Team | Department of Civil Engineering.
+            <br>This document is a digital record of the urban green mitigation assessment.
+        </footer>
+    `;
+
+    // Configure PDF options
+    const opt = {
+        margin: 10,
+        filename: `Sustainability_Report_${now.toLocaleDateString()}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    // Use html2pdf library to save
+    html2pdf().set(opt).from(reportContainer).save();
+}
+
 
 
 
