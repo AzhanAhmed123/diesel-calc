@@ -7,12 +7,11 @@ function goToStep3(){
 }
 
 function setVisibility(id){
-  ['step1','step2','step3'].forEach(x => { // Removed 'final-impact' from the loop
+  ['step1','step2','step3'].forEach(x => {
     const el = document.getElementById(x);
     if(el) el.style.display = (x === id ? 'block' : 'none');
   });
   
-  // Only hide the impact section if we go back to Step 1 or 2
   if(id === 'step1' || id === 'step2') {
       const impact = document.getElementById('final-impact');
       if(impact) impact.style.display = 'none';
@@ -20,7 +19,6 @@ function setVisibility(id){
 }
 
 function calculate() {
-    // --- Inputs ---
     const P = Number(document.getElementById('genPower').value) || 0;
     const H = Number(document.getElementById('hours').value) || 0;
     const dailyLiters = Number(document.getElementById('dailyLiters').value) || 0;
@@ -29,32 +27,27 @@ function calculate() {
     const install = Number(document.getElementById('installCost').value) || 0;
     const maint = Number(document.getElementById('maintCost').value) || 0;
 
-    // --- Market Data (Dec 2025) ---
-    const price = 265.65; // PKR per Liter
-    const EF = 2.68;      // kg CO2 per Liter
+    const price = 265.65; 
+    const EF = 2.68;      
 
-    // --- 1. Operational & Immediate Financials ---
     const fuelDay = dailyLiters; 
     const co2Day = fuelDay * EF; 
     const totalAnnualCO2 = co2Day * 365; 
     const costDay = fuelDay * price; 
     const annualDieselExpense = costDay * 365; 
 
-    // --- 2. Energy Outputs ---
     const dieselEnergy = P * H; 
     const solarEnergy = S * sun; 
 
-    // --- 3. Environmental & Mitigation ---
     const replacedFraction = dieselEnergy > 0 ? Math.min(solarEnergy / dieselEnergy, 1) : 0;
     const annualCO2saved = totalAnnualCO2 * replacedFraction; 
     const residualCO2 = totalAnnualCO2 - annualCO2saved; 
 
-    // --- 4. Long-term Financials ---
     const annualSavings = (annualDieselExpense * replacedFraction) - maint;
     const payback = annualSavings > 0 ? (install / annualSavings) : 0; 
     const profit10 = (annualSavings * 10) - install; 
 
-    // --- Animate Results ---
+    // Animate Results
     animateValue("fuelDay", 0, fuelDay, 1000);
     animateValue("co2Day", 0, co2Day, 1000);
     animateValue("totalCO2Year", 0, totalAnnualCO2, 1000);
@@ -67,17 +60,14 @@ function calculate() {
     animateValue("payback", 0, payback, 1000);
     animateValue("profit10", 0, profit10, 1000);
 
-    // Update the Tree Hero
     const treesNeeded = Math.ceil(residualCO2 / 22);
-    const heroDisplay = document.getElementById('tree-count-hero');
-    if (heroDisplay) {
-        heroDisplay.innerText = treesNeeded.toLocaleString();
-    }
+    document.getElementById('tree-count-hero').innerText = treesNeeded.toLocaleString();
 
-    // Show Final Impact Section
+    // Show Impact, PDF button, and Reset button after a delay
     setTimeout(() => {
-        const impact = document.getElementById('final-impact');
-        if(impact) impact.style.display = 'block';
+        document.getElementById('final-impact').style.display = 'block';
+        document.getElementById('pdfBtn').style.display = 'inline-block';
+        document.getElementById('resetBtn').style.display = 'inline-block';
     }, 1500);
 }
 
@@ -92,20 +82,9 @@ function animateValue(id, start, end, duration) {
         let now = new Date().getTime();
         let remaining = Math.max((endTime - now) / duration, 0);
         let value = end - (remaining * range);
-        
-        obj.innerHTML = value.toLocaleString(undefined, {
-            minimumFractionDigits: 2, 
-            maximumFractionDigits: 2
-        });
-        
-        if (now < endTime) {
-            requestAnimationFrame(run);
-        } else {
-            obj.innerHTML = end.toLocaleString(undefined, {
-                minimumFractionDigits: 2, 
-                maximumFractionDigits: 2
-            });
-        }
+        obj.innerHTML = value.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        if (now < endTime) requestAnimationFrame(run);
+        else obj.innerHTML = end.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
     }
     requestAnimationFrame(run);
 }
@@ -119,11 +98,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function updateLiveEfficiency() {
         const H = Number(hoursInput.value) || 0;
         const L = Number(litersInput.value) || 0;
-        if (H > 0 && L > 0) {
-            efficiencyDisplay.value = (L / H).toFixed(2);
-        } else {
-            efficiencyDisplay.value = "";
-        }
+        efficiencyDisplay.value = (H > 0 && L > 0) ? (L / H).toFixed(2) : "";
     }
     if(hoursInput && litersInput) {
         hoursInput.addEventListener('input', updateLiveEfficiency);
@@ -131,21 +106,13 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-
-
-// --- PDF Generation Logic ---
+// PDF Generation Logic
 function downloadPDF() {
     const resultsContent = document.getElementById('step3'); 
     const impactContent = document.getElementById('final-impact');
-    
-    // Get Current Date & Time
     const now = new Date();
-    const dateTime = now.toLocaleString('en-US', { 
-        dateStyle: 'medium', 
-        timeStyle: 'short' 
-    });
+    const dateTime = now.toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
 
-    // Create a temporary container for the PDF layout
     const reportContainer = document.createElement('div');
     reportContainer.style.padding = "30px";
     reportContainer.style.fontFamily = "Arial, sans-serif";
@@ -156,24 +123,19 @@ function downloadPDF() {
             <p style="margin: 5px 0; font-weight: bold;">NED University of Engineering & Technology</p>
             <p style="font-size: 0.85rem; color: #666;">Generated on: ${dateTime}</p>
         </div>
-        
         <div style="margin-bottom: 40px;">
             <h3 style="color: #1e40af; border-bottom: 1px solid #eee; padding-bottom: 5px;">1. Calculation Summary</h3>
-            ${resultsContent.innerHTML}
+            ${resultsContent.querySelector('.results').innerHTML}
         </div>
-
         <div style="margin-bottom: 40px;">
             <h3 style="color: #1e40af; border-bottom: 1px solid #eee; padding-bottom: 5px;">2. Environmental Mitigation</h3>
             ${impactContent.innerHTML}
         </div>
-
         <footer style="margin-top: 60px; text-align: center; font-size: 0.75rem; color: #888; border-top: 1px solid #eee; padding-top: 15px;">
             Developed by: Engr. Azhan Ahmed & Team | Department of Civil Engineering.
-            <br>This document is a digital record of the urban green mitigation assessment.
         </footer>
     `;
 
-    // Configure PDF options
     const opt = {
         margin: 10,
         filename: `Sustainability_Report_${now.toLocaleDateString()}.pdf`,
@@ -182,7 +144,6 @@ function downloadPDF() {
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
 
-    // Use html2pdf library to save
     html2pdf().set(opt).from(reportContainer).save();
 }
 
