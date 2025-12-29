@@ -8,54 +8,60 @@ function goToStep3(){
 }
 function setVisibility(id){['step1','step2','step3','final-impact'].forEach(x=>document.getElementById(x).style.display=(x===id?'block':'none'))}
 
-function calculate(){
-  const P = Number(document.getElementById('genPower').value)||0;
-  const H = Number(document.getElementById('hours').value)||0;
-  const dailyLiters = Number(document.getElementById('dailyLiters').value) || 0;
-  
-  // Calculate L/h efficiency based on your approach: (Total Liters / Hours)
-  const F = H > 0 ? (dailyLiters / H) : 0; 
-  document.getElementById('calcEfficiency').value = F.toFixed(2);
-  // Latest Dec 2025 Market Price
-  const price = Number(document.getElementById('dieselPrice').value) || 265.65;
-  const EF = Number(document.getElementById('co2Factor').value)||2.68;
-  const S = Number(document.getElementById('solarCap').value)||0;
-  const sun = Number(document.getElementById('sunHours').value)||5.5;
-  const install = Number(document.getElementById('installCost').value)||0;
-  const maint = Number(document.getElementById('maintCost').value)||0;
+function calculate() {
+    // --- Inputs (Assuming these IDs exist in your Step 1 & 2) ---
+    const P = Number(document.getElementById('genPower').value) || 0;
+    const H = Number(document.getElementById('hours').value) || 0;
+    const dailyLiters = Number(document.getElementById('dailyLiters').value) || 0;
+    const S = Number(document.getElementById('solarCap').value) || 0;
+    const sun = Number(document.getElementById('sunHours').value) || 5.5;
+    const install = Number(document.getElementById('installCost').value) || 0;
+    const maint = Number(document.getElementById('maintCost').value) || 0;
 
-  const fuelDay = F * H;
-  const co2Day = fuelDay * EF;
-  const costDay = fuelDay * price;
-  const dieselEnergy = P * H;
-  const solarEnergy = S * sun;
-  const replacedFraction = dieselEnergy > 0 ? Math.min(solarEnergy/dieselEnergy, 1) : 0;
-  
-  const annualCO2saved = co2Day * 365 * replacedFraction;
-  const annualFuelCost = costDay * 365;
-  const annualSavings = Math.max(0, annualFuelCost * replacedFraction - maint);
-  const payback = annualSavings > 0 ? (install/annualSavings) : 0;
+    // --- Market Data (Dec 2025) ---
+    const price = 265.65; // PKR per Liter
+    const EF = 2.68;      // kg CO2 per Liter
 
-  // --- NEW LOGIC FOR REMAINING DEBT ---
-  const totalAnnualCO2 = co2Day * 365;
-  const remainingCO2 = Math.max(0, totalAnnualCO2 - annualCO2saved);
-  // Calculate trees needed to offset what the solar panels missed
-  const treesNeeded = Math.ceil(remainingCO2 / 22); 
+    // --- 1. Operational & Immediate Financials ---
+    const fuelDay = dailyLiters; // Fuel per day (L)
+    const co2Day = fuelDay * EF; // CO2 per day (kg)
+    const totalAnnualCO2 = co2Day * 365; // Total Annual CO2 (kg)
+    const costDay = fuelDay * price; // Diesel cost per day (PKR)
+    const annualDieselExpense = costDay * 365; // Annual Diesel Expense (PKR)
 
-  // ANIMATING ALL RESULTS
-  animateValue("fuelDay", 0, fuelDay, 1000);
-  animateValue("co2Day", 0, co2Day, 1000);
-  animateValue("costDay", 0, costDay, 1000);
-  animateValue("dieselEnergy", 0, dieselEnergy, 1000);
-  animateValue("solarEnergy", 0, solarEnergy, 1000);
-  animateValue("annualCO2", 0, annualCO2saved, 1200);
-  animateValue("payback", 0, payback, 1000);
+    // --- 2. Energy Outputs ---
+    const dieselEnergy = P * H; // Diesel energy/day (kWh)
+    const solarEnergy = S * sun; // Solar energy/day (kWh)
 
-  // UPDATE THE HERO DISPLAY
-  const heroDisplay = document.getElementById('tree-count-hero');
-  if (heroDisplay) {
-    heroDisplay.innerText = treesNeeded.toLocaleString();
-  }
+    // --- 3. Environmental & Mitigation ---
+    const replacedFraction = dieselEnergy > 0 ? Math.min(solarEnergy / dieselEnergy, 1) : 0;
+    const annualCO2saved = totalAnnualCO2 * replacedFraction; // Annual CO2 saved (kg)
+    const residualCO2 = totalAnnualCO2 - annualCO2saved; // Residual CO2 (kg)
+
+    // --- 4. Long-term Financials ---
+    const annualSavings = (annualDieselExpense * replacedFraction) - maint;
+    const payback = annualSavings > 0 ? (install / annualSavings) : 0; // Payback period (Years)
+    const profit10 = (annualSavings * 10) - install; // 10-Year Net Profit (PKR)
+
+    // --- Animate Results in Requested Order ---
+    animateValue("fuelDay", 0, fuelDay, 1000);
+    animateValue("co2Day", 0, co2Day, 1000);
+    animateValue("totalCO2Year", 0, totalAnnualCO2, 1000);
+    animateValue("costDay", 0, costDay, 1000);
+    animateValue("costYear", 0, annualDieselExpense, 1000);
+    animateValue("dieselEnergy", 0, dieselEnergy, 1000);
+    animateValue("solarEnergy", 0, solarEnergy, 1000);
+    animateValue("annualCO2", 0, annualCO2saved, 1000);
+    animateValue("remainingCO2", 0, residualCO2, 1000);
+    animateValue("payback", 0, payback, 1000);
+    animateValue("profit10", 0, profit10, 1000);
+
+    // Update the Tree Hero (optional)
+    const treesNeeded = Math.ceil(residualCO2 / 22);
+    if (document.getElementById('tree-count-hero')) {
+        document.getElementById('tree-count-hero').innerText = treesNeeded.toLocaleString();
+    }
+}
 
   // Final Impact Screen delay
   setTimeout(() => {
@@ -115,6 +121,7 @@ document.addEventListener("DOMContentLoaded", function() {
     hoursInput.addEventListener('input', updateLiveEfficiency);
     litersInput.addEventListener('input', updateLiveEfficiency);
 });
+
 
 
 
