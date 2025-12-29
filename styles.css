@@ -1336,4 +1336,23 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
 
 
 
+.sust-logo-img, .impact-info h2, .impact-info p {
+    -webkit-font-smoothing: antialiased;
+    backface-visibility: hidden;
+    transform: translateZ(0); /* Forces GPU high-quality rendering */
+}
 
+
+.actions {
+    display: flex;
+    gap: 10px;          /* Space between buttons */
+    align-items: center;
+    margin-top: 20px;
+    flex-wrap: wrap;    /* Prevents overlapping on small screens */
+}
+
+.actions button {
+    padding: 10px 20px;
+    height: 45px;       /* Keeps all buttons the same height */
+    cursor: pointer;
+}
