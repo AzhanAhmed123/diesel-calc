@@ -1016,3 +1016,72 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
     }
 
 
+/* Research Source Buttons Styling */
+    .source-container {
+      margin: 40px 0;
+      padding: 20px;
+      background: #fdfdfd;
+      border-radius: 12px;
+      border: 1px solid #eee;
+    }
+
+    .source-title {
+      font-size: 1.1rem;
+      margin-bottom: 20px !important;
+      border: none !important;
+    }
+
+    .links-grid {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .source-button {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 15px 20px;
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      min-width: 200px;
+      position: relative;
+    }
+
+    .btn-text {
+      color: #27ae60;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .btn-subtext {
+      color: #7f8c8d;
+      font-size: 0.75rem;
+      margin-top: 4px;
+    }
+
+    .source-button i {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 0.8rem;
+      color: #bdc3c7;
+    }
+
+    .source-button:hover {
+      border-color: #27ae60;
+      box-shadow: 0 4px 12px rgba(39, 174, 96, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .source-button:hover i {
+      color: #27ae60;
+    }
+
+    @media (max-width: 600px) {
+      .links-grid { flex-direction: column; }
+    }
+
