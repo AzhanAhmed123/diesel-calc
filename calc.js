@@ -11,9 +11,14 @@ function setVisibility(id){['step1','step2','step3','final-impact'].forEach(x=>d
 function calculate(){
   const P = Number(document.getElementById('genPower').value)||0;
   const H = Number(document.getElementById('hours').value)||0;
-  const fuelInput = document.getElementById('fuelEff');
-  const F = Number(fuelInput.value) || (P * 0.22);
-  const price = Number(document.getElementById('dieselPrice').value)||265.65;
+  // LOGIC: Get the actual total liters consumed per day
+  const dailyLiters = Number(document.getElementById('fuelEff').value) || 0;
+  
+  // Calculate L/h efficiency based on your approach: (Total Liters / Hours)
+  const F = H > 0 ? (dailyLiters / H) : 0; 
+  
+  // Latest Dec 2025 Market Price
+  const price = Number(document.getElementById('dieselPrice').value) || 265.65;
   const EF = Number(document.getElementById('co2Factor').value)||2.68;
   const S = Number(document.getElementById('solarCap').value)||0;
   const sun = Number(document.getElementById('sunHours').value)||5.5;
@@ -114,6 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
 
 
 
