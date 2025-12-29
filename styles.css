@@ -1359,64 +1359,50 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
 
 
 
-/* Container for perfect alignment */
 .actions {
     display: flex;
-    gap: 12px;
+    gap: 15px;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
-    flex-wrap: wrap;
+    margin-top: 35px;
 }
 
-/* Base button style */
 .actions button {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    padding: 12px 26px;
-    border-radius: 8px; /* Professional slightly rounded corners */
+    font-family: 'Inter', sans-serif;
+    padding: 14px 30px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: none;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
-/* Primary Action: Calculate (Bold Green) */
+/* Main Calculate Button */
 button[onclick="calculate()"] {
-    background-color: #059669; /* Darker Green */
-    color: #ffffff;
-    box-shadow: 0 4px 0px #047857; /* Deep green 3D effect */
+    background: #059669;
+    color: white;
+    box-shadow: 0 8px 20px -6px rgba(5, 150, 105, 0.6);
 }
 
 button[onclick="calculate()"]:hover {
-    background-color: #047857;
-    transform: translateY(2px);
-    box-shadow: 0 2px 0px #047857;
+    background: #047857;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -6px rgba(5, 150, 105, 0.7);
 }
 
-/* Secondary Action: New Calculation (Clean Emerald) */
+/* Reset Button */
 #resetBtn {
-    background-color: #10b981; /* Lighter Emerald Green */
-    color: white;
-    box-shadow: 0 4px 0px #059669;
+    background: white;
+    color: #059669;
+    border: 2px solid #059669;
 }
 
 #resetBtn:hover {
-    background-color: #059669;
-    transform: translateY(2px);
-    box-shadow: 0 2px 0px #059669;
-}
-
-/* Back Button (Neutral Gray/Green) */
-button[onclick*="goToStep"] {
-    background-color: #f0fdf4; /* Very pale green tint */
-    color: #065f46;
-    border: 1px solid #a7f3d0;
-}
-
-button[onclick*="goToStep"]:hover {
-    background-color: #d1fae5;
+    background: #ecfdf5;
+    transform: translateY(-4px);
 }
