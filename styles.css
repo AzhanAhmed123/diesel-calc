@@ -1414,3 +1414,25 @@ button[onclick*="goToStep"]:hover {
 .actions button:active {
     transform: translateY(0);
 }
+
+
+
+/* This centers the buttons and aligns them perfectly in one row */
+.actions {
+    display: flex;            /* Enables Flexbox */
+    justify-content: center;  /* Centers buttons horizontally */
+    align-items: center;      /* Aligns buttons perfectly on the vertical center line */
+    gap: 15px;               /* Keeps consistent spacing between them */
+    margin-top: 30px;
+    width: 100%;             /* Ensures the container takes full width */
+}
+
+/* Ensure all buttons have the exact same height for perfect alignment */
+.actions button {
+    height: 40px;            /* Fixed height is the secret to perfect alignment */
+    display: flex;
+    align-items: center;     /* Centers text/icons inside the button */
+    justify-content: center;
+    box-sizing: border-box;  /* Prevents borders from adding extra height */
+    margin: 0;               /* Removes any default browser margins */
+}
