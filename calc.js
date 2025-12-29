@@ -11,7 +11,7 @@ function setVisibility(id){['step1','step2','step3','final-impact'].forEach(x=>d
 function calculate(){
   const P = Number(document.getElementById('genPower').value)||0;
   const H = Number(document.getElementById('hours').value)||0;
-  const totalLiters = Number(document.getElementById('dailyLiters').value) || 0;
+  const dailyLiters = Number(document.getElementById('dailyLiters').value) || 0;
   
   // Calculate L/h efficiency based on your approach: (Total Liters / Hours)
   const F = H > 0 ? (dailyLiters / H) : 0; 
@@ -92,6 +92,7 @@ function animateValue(id, start, end, duration) {
     }
     requestAnimationFrame(run);
 }
+
 
 
 
