@@ -108,6 +108,12 @@
       <div class="result-row"><span>Payback period:</span><strong id="payback">0.00</strong><span>years</span></div>
     </div>
 
+    <div class="actions">
+        <button onclick="goToStep2()">← Back</button>
+        <button onclick="calculate()">Calculate</button>
+        <button class="reset-btn" onclick="location.reload()" style="display:none;" id="resetBtn">New Calculation</button>
+    </div>
+
     <div id="final-impact" style="display:none; margin-top: 30px; border-top: 2px dashed #e0e7ff; padding-top: 20px;">
         <div class="impact-hero">
             <img src="sust-logo.png" class="sust-logo-img" alt="Sustainability">
@@ -126,12 +132,7 @@
             </div>
         </div>
     </div>
-
-    <div class="actions">
-        <button onclick="goToStep2()">← Back</button>
-        <button onclick="calculate()">Calculate</button>
-        <button class="reset-btn" onclick="location.reload()" style="display:none;" id="resetBtn">New Calculation</button>
-    </div>
+        
     <p class="notes">Tip: use the Karachi default values in the About page as references for your report.</p>
 </div>
 
@@ -149,6 +150,7 @@
 </html>
       
         
+
 
 
 
