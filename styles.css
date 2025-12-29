@@ -1085,3 +1085,56 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
       .links-grid { flex-direction: column; }
     }
 
+
+
+/* Strategy Box Styling */
+    .strategy-box {
+      background: #fdfdfd;
+      border: 1px solid #e0e0e0;
+      border-left: 5px solid #27ae60;
+      padding: 30px;
+      border-radius: 12px;
+      margin: 30px auto;
+      max-width: 1000px;
+    }
+
+    .strategy-box h4 {
+      margin-top: 0;
+      color: #1A5A44;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .benefit-grid {
+      display: flex;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .benefit-item {
+      flex: 1;
+      background: #ffffff;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #f1f1f1;
+      font-size: 0.9rem;
+    }
+
+    .benefit-item strong {
+      display: block;
+      color: #27ae60;
+      margin-bottom: 5px;
+    }
+
+    .action-callout {
+      background: #e8f6ef;
+      padding: 15px;
+      border-radius: 8px;
+      color: #1A5A44;
+      font-size: 0.95rem;
+      border: 1px inset rgba(39, 174, 96, 0.2);
+    }
+
+    @media (max-width: 650px) {
+      .benefit-grid { flex-direction: column; }
+    }
