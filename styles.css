@@ -1634,3 +1634,51 @@ button[onclick*="goToStep"]:hover {
         grid-template-columns: repeat(4, 1fr); /* Adds a 4th column on very big screens */
     }
 }
+
+
+
+/* 1. Remove padding from the workspace so the hero touches the edges */
+.insights-workspace {
+    padding: 0; 
+    background-color: #fdfdfd;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* 2. Full-width Hero with Background Image */
+.big-picture-hero {
+    width: 100vw; /* Forces it to use the full viewport width */
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    
+    /* BACKGROUND IMAGE SETTINGS */
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+                url('karachi_city_bg.jpg'); /* Ensure this file is in your folder */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+    
+    color: white;
+    padding: 100px 0;
+    margin-bottom: 60px;
+    border-bottom: 5px solid #059669;
+}
+
+/* 3. Keep the text inside the hero aligned with the rest of the site */
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 4. Glassmorphism effect for the small boxes */
+.hero-box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 12px;
+}
