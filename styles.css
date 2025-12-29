@@ -1343,61 +1343,74 @@ table.data th, table.data td{padding:8px;border:1px solid #e6f3ea;text-align:lef
 }
 
 
+/* Container for perfect button alignment */
 .actions {
     display: flex;
-    gap: 10px;          /* Space between buttons */
-    align-items: center;
-    margin-top: 20px;
-    flex-wrap: wrap;    /* Prevents overlapping on small screens */
-}
-
-.actions button {
-    padding: 10px 20px;
-    height: 45px;       /* Keeps all buttons the same height */
-    cursor: pointer;
-}
-
-
-
-/* Container */
-.actions {
-    display: flex;
-    gap: 20px;
+    gap: 16px;
     justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    padding: 20px;
+    flex-wrap: wrap;
 }
 
-/* The Button Base */
+/* The Premium Button Base */
 .actions button {
-    position: relative;
-    overflow: hidden;
-    padding: 15px 35px;
-    border-radius: 50px; /* Pill Shape */
-    font-size: 16px;
-    font-weight: 600;
-    border: none;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 16px 32px;
+    border-radius: 4px; /* Sharp, professional engineering look */
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid transparent;
 }
 
-/* Green Gradient Button */
-button[onclick="calculate()"], #resetBtn {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+/* Primary: CALCULATE (Green & White) */
+button[onclick="calculate()"] {
+    background-color: #059669;
     color: white;
-    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 10px 20px -10px rgba(5, 150, 105, 0.5);
 }
 
-button[onclick="calculate()"]:hover, #resetBtn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+button[onclick="calculate()"]:hover {
+    background-color: #047857;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px -10px rgba(5, 150, 105, 0.6);
 }
 
-/* Back Button - Outlined Style */
-button[onclick*="goToStep"] {
-    background: transparent;
-    color: #059669;
+/* Secondary: NEW CALCULATION (Black & Green) */
+#resetBtn {
+    background-color: #111827; /* Rich Black */
+    color: #10b981; /* Emerald Green Text */
     border: 2px solid #059669;
 }
 
+#resetBtn:hover {
+    background-color: #059669;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Back Button (Minimalist White & Black) */
+button[onclick*="goToStep"] {
+    background-color: white;
+    color: #111827;
+    border: 2px solid #e5e7eb;
+}
+
 button[onclick*="goToStep"]:hover {
-    background: rgba(5, 150, 105, 0.05);
+    border-color: #111827;
+    background-color: #f9fafb;
+}
+
+/* Active Press Effect for all */
+.actions button:active {
+    transform: translateY(0);
+    box-shadow: none;
 }
