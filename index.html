@@ -220,42 +220,47 @@
         }, 500);
     };
 
-    // 3. LIVE STATS CALCULATION
+    // 3. LIVE STATS CALCULATION (Updated to count all comments)
     function updateReviewStats() {
         const iframe = document.querySelector('#cusdis_thread iframe');
         if (!iframe) return;
 
         try {
             const content = iframe.contentDocument || iframe.contentWindow.document;
-            const bodyText = content.body.innerText;
+            
+            // A. Count TOTAL comments by looking for Cusdis comment item classes
+            // Cusdis typically uses div elements for each comment block
+            const allComments = content.querySelectorAll('div[style*="margin-bottom"]');
+            const totalCount = allComments.length > 0 ? allComments.length : 0;
 
-            // Pattern to find the rating tags in comments
+            // B. Calculate AVERAGE from comments that have ratings
+            const bodyText = content.body.innerText;
             const ratingPattern = /\[Rating:\s?([⭐★]+)\]/g;
             const matches = [...bodyText.matchAll(ratingPattern)];
             
             let totalStars = 0;
-            let count = matches.length;
+            let ratedCommentsCount = matches.length;
 
             matches.forEach(match => {
                 const starIcons = match[1].match(/[⭐★]/g) || [];
                 totalStars += starIcons.length;
             });
 
-            const average = count > 0 ? (totalStars / count).toFixed(1) : "0.0";
+            const average = ratedCommentsCount > 0 ? (totalStars / ratedCommentsCount).toFixed(1) : "0.0";
 
-            // Update the Dashboard
+            // C. Update the Dashboard UI
             const countElement = document.getElementById('total-count');
             const avgElement = document.getElementById('avg-rating');
             
-            if(countElement) countElement.innerText = count;
-            if(avgElement) avgElement.innerText = average;
+            if(countElement) countElement.innerText = totalCount; // Shows all 4+ comments
+            if(avgElement) avgElement.innerText = average;      // Avg from rated ones only
 
         } catch (e) {
             console.log("Syncing stats...");
         }
     }
 
-    // Run every 3 seconds to update counts as you approve comments
+    // Run every 3 seconds to keep stats live
     setInterval(updateReviewStats, 3000);
 </script>
 
