@@ -221,6 +221,47 @@
         }, 500);
     };
 </script>
+    function updateReviewStats() {
+        const iframe = document.querySelector('#cusdis_thread iframe');
+        if (!iframe) return;
+
+        try {
+            // Access the content inside the Cusdis iframe
+            const content = iframe.contentDocument || iframe.contentWindow.document;
+            const bodyText = content.body.innerText;
+
+            // Pattern to find: [Rating: ⭐⭐⭐]
+            const ratingPattern = /\[Rating:\s?([⭐★]+)\]/g;
+            const matches = [...bodyText.matchAll(ratingPattern)];
+            
+            let totalStars = 0;
+            let count = matches.length;
+
+            matches.forEach(match => {
+                // Count how many star symbols (UTF-8) are in the match
+                const starIcons = match[1].match(/[⭐★]/g) || [];
+                totalStars += starIcons.length;
+            });
+
+            // Calculate Math
+            const average = count > 0 ? (totalStars / count).toFixed(1) : "0.0";
+
+            // Update UI
+            const countElement = document.getElementById('total-count');
+            const avgElement = document.getElementById('avg-rating');
+            
+            if(countElement) countElement.innerText = count;
+            if(avgElement) avgElement.innerText = average;
+
+        } catch (e) {
+            // If iframe is cross-origin or not loaded yet, fail silently
+            console.log("Waiting for review data...");
+        }
+    }
+
+    // Run every 3 seconds to keep stats live as you approve comments
+    setInterval(updateReviewStats, 3000);
+</script>
 
   
 
