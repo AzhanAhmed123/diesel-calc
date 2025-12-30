@@ -1700,3 +1700,27 @@ button[onclick*="goToStep"]:hover {
     transform: translateZ(0);
     backface-visibility: hidden;
 }
+
+
+
+.rating-system {
+  margin-bottom: 15px;
+  font-family: sans-serif;
+  text-align: left;
+}
+.stars-container {
+  display: flex;
+  gap: 5px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #ddd; /* Empty star color */
+}
+.stars-container .star.active {
+  color: #ffca28; /* Filled star color (Gold) */
+}
+.rating-label {
+  font-size: 14px;
+  color: #2e7d32;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
