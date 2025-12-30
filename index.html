@@ -162,7 +162,7 @@
     /* Force Cusdis to be full width and remove its internal scroll */
     #cusdis_thread iframe {
         width: 100% !important;
-        min-height: 600px !important; /* Forces it to be tall so no internal scroll */
+        min-height: 600px !important; 
         border: none !important;
     }
 </style>
@@ -183,7 +183,7 @@
                 s.classList.toggle('active', s.getAttribute('data-val') <= val);
             });
 
-            // Update status
+            // Update status text
             const starIcons = "⭐".repeat(val);
             statusText.innerText = `Selected: ${val} Stars. Now type your feedback below!`;
 
@@ -192,14 +192,14 @@
             if (iframe && iframe.contentDocument) {
                 const textArea = iframe.contentDocument.querySelector('textarea');
                 if (textArea) {
-                    textArea.value = `[Rating: ${starIcons}]\n` + textArea.value;
+                    textArea.value = `[Rating: ${starIcons}] ` + textArea.value;
                     textArea.focus();
                 }
             }
         });
     });
 
-    // 2. CUSDIS CUSTOMIZATION (Labels and Height)
+    // 2. CUSDIS CUSTOMIZATION (Labels and Styling)
     window.cusdis_on_runtime_ready = function() {
         const style = document.createElement('style');
         style.innerHTML = `
@@ -207,8 +207,7 @@
             label[for="nickname"] { font-size: 0 !important; }
             label[for="content"]::before { content: "Step 2: Type Your Feedback (Rating will be added here)"; font-size: 14px; visibility: visible; font-weight: bold; color: #004d40; }
             label[for="content"] { font-size: 0 !important; }
-            button[type="submit"] { background: #2ecc71 !important; border-radius: 8px !important; font-weight: bold !important; }
-            /* Prevent internal scrolling */
+            button[type="submit"] { background: #2ecc71 !important; border-radius: 8px !important; font-weight: bold !important; color: white !important; }
             body { overflow: hidden !important; }
         `;
 
@@ -220,7 +219,8 @@
             }
         }, 500);
     };
-<script> // <--- MAKE SURE THIS OPENING TAG IS HERE
+
+    // 3. LIVE STATS CALCULATION
     function updateReviewStats() {
         const iframe = document.querySelector('#cusdis_thread iframe');
         if (!iframe) return;
@@ -228,6 +228,8 @@
         try {
             const content = iframe.contentDocument || iframe.contentWindow.document;
             const bodyText = content.body.innerText;
+
+            // Pattern to find the rating tags in comments
             const ratingPattern = /\[Rating:\s?([⭐★]+)\]/g;
             const matches = [...bodyText.matchAll(ratingPattern)];
             
@@ -241,6 +243,7 @@
 
             const average = count > 0 ? (totalStars / count).toFixed(1) : "0.0";
 
+            // Update the Dashboard
             const countElement = document.getElementById('total-count');
             const avgElement = document.getElementById('avg-rating');
             
@@ -248,16 +251,13 @@
             if(avgElement) avgElement.innerText = average;
 
         } catch (e) {
-            console.log("Waiting for review data...");
+            console.log("Syncing stats...");
         }
     }
 
+    // Run every 3 seconds to update counts as you approve comments
     setInterval(updateReviewStats, 3000);
 </script>
-
-  
-
-
 
   <footer class="site-footer">
     <div class="container">
@@ -268,6 +268,5 @@
   <script src="common.js"></script>
 </body>
 </html>
-
 
 
