@@ -111,7 +111,7 @@
     </section>
   </main>
 
-  <section class="container" style="margin: 20px auto 40px auto; max-width: 800px;">
+  <section class="container" style="margin: 20px auto 40px auto; width: 100%;">
     <div style="text-align: center; margin-bottom: 15px;">
         <h3 style="color: #004d40; font-family: sans-serif; font-size: 1.2rem; display: inline-flex; align-items: center; gap: 8px;">
             <span style="width: 8px; height: 8px; background: #2ecc71; border-radius: 50%; display: inline-block;"></span>
@@ -121,7 +121,7 @@
 
     <div style="text-align: center; margin-bottom: 20px;">
         <p style="font-family: sans-serif; font-size: 0.9rem; color: #666; margin-bottom: 5px;">Select your rating:</p>
-        <div id="star-rater" style="display: flex; justify-content: center; gap: 10px; font-size: 2rem; cursor: pointer; color: #ddd;">
+        <div id="star-rater" style="display: flex; justify-content: center; gap: 10px; font-size: 2.5rem; cursor: pointer; color: #ddd;">
             <span class="star" data-val="1">★</span>
             <span class="star" data-val="2">★</span>
             <span class="star" data-val="3">★</span>
@@ -130,7 +130,7 @@
         </div>
     </div>
 
-    <div id="comment-wrapper" style="background: #ffffff; padding: 15px; border-radius: 12px; border: 1px solid #e0e0e0; overflow: hidden;">
+    <div id="comment-wrapper" style="background: #ffffff; padding: 15px; border-radius: 12px; border: 1px solid #e0e0e0; width: 100%; box-sizing: border-box;">
         <div id="cusdis_thread"
           data-host="https://cusdis.com"
           data-app-id="43f7867a-ea84-4649-86cd-a51810398e24"
@@ -144,14 +144,14 @@
 <style>
     /* Styling for the Star UI */
     #star-rater .star.active { color: #ffca28; }
-    #star-rater .star:hover { transform: scale(1.1); transition: 0.2s; }
-
-    /* Cusdis iframe fixes */
-    #comment-wrapper iframe {
-        scrollbar-width: none !important;
-        -ms-overflow-style: none !important;
+    
+    /* Crucial: Force the iframe to grow with content instead of scrolling */
+    #cusdis_thread iframe {
+        width: 100% !important;
+        min-height: 500px; /* Set a starting height */
+        border: none !important;
+        overflow: hidden !important;
     }
-    #comment-wrapper iframe::-webkit-scrollbar { display: none !important; }
 </style>
 
 <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
