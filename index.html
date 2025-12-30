@@ -220,7 +220,7 @@
         }, 500);
     };
 
-    // 3. LIVE STATS CALCULATION (Updated to count all comments)
+    // 3. LIVE STATS CALCULATION (Fixed to count all comments)
     function updateReviewStats() {
         const iframe = document.querySelector('#cusdis_thread iframe');
         if (!iframe) return;
@@ -228,12 +228,14 @@
         try {
             const content = iframe.contentDocument || iframe.contentWindow.document;
             
-            // A. Count TOTAL comments by looking for Cusdis comment item classes
-            // Cusdis typically uses div elements for each comment block
-            const allComments = content.querySelectorAll('div[style*="margin-bottom"]');
-            const totalCount = allComments.length > 0 ? allComments.length : 0;
+            // Count TOTAL comments by looking for 'Reply' buttons present in every comment
+            const allReplyButtons = content.querySelectorAll('button');
+            let totalCount = 0;
+            allReplyButtons.forEach(btn => {
+                if(btn.innerText.toLowerCase().includes('reply')) totalCount++;
+            });
 
-            // B. Calculate AVERAGE from comments that have ratings
+            // Calculate AVERAGE from comments that have ratings
             const bodyText = content.body.innerText;
             const ratingPattern = /\[Rating:\s?([⭐★]+)\]/g;
             const matches = [...bodyText.matchAll(ratingPattern)];
@@ -248,12 +250,12 @@
 
             const average = ratedCommentsCount > 0 ? (totalStars / ratedCommentsCount).toFixed(1) : "0.0";
 
-            // C. Update the Dashboard UI
+            // Update the Dashboard UI
             const countElement = document.getElementById('total-count');
             const avgElement = document.getElementById('avg-rating');
             
-            if(countElement) countElement.innerText = totalCount; // Shows all 4+ comments
-            if(avgElement) avgElement.innerText = average;      // Avg from rated ones only
+            if(countElement) countElement.innerText = totalCount;
+            if(avgElement) avgElement.innerText = average;
 
         } catch (e) {
             console.log("Syncing stats...");
@@ -273,5 +275,4 @@
   <script src="common.js"></script>
 </body>
 </html>
-
 
