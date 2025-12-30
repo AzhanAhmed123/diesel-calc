@@ -1724,3 +1724,38 @@ button[onclick*="goToStep"]:hover {
   font-weight: bold;
   margin-bottom: 5px;
 }
+
+
+
+
+
+/* Mobile Responsive Fix for Insights Page */
+@media screen and (max-width: 768px) {
+    /* Adjust the container holding the three columns */
+    .insights-grid, 
+    .dual-crisis-container, 
+    .rationale-container {
+        display: flex;
+        flex-direction: column; /* Stacks cards vertically */
+        gap: 20px;
+        padding: 10px;
+    }
+
+    /* Ensure each card takes full width on mobile */
+    .glass-card, 
+    .insight-card, 
+    .crisis-box {
+        width: 100% !important;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    /* Adjust heading sizes so they don't overflow */
+    .brand-title h1 {
+        font-size: 1.2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.1rem;
+    }
+}
